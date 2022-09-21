@@ -33,9 +33,10 @@ namespace TwitchLib.Api.Core.HttpCallHandlers
         public async Task PutBytesAsync(string url, byte[] payload)
         {
             var response = await _http.PutAsync(new Uri(url), new ByteArrayContent(payload)).ConfigureAwait(false);
+            var respStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (!response.IsSuccessStatusCode)
-                HandleWebException(response);
+                HandleWebException(response, respStr);
         }
 
         public async Task<KeyValuePair<int, string>> GeneralRequestAsync(string url, string method,
@@ -68,14 +69,14 @@ namespace TwitchLib.Api.Core.HttpCallHandlers
             if (payload != null)
                 request.Content = new StringContent(payload, Encoding.UTF8, "application/json");
 
-            var response = await _http.SendAsync(request).ConfigureAwait(false);
+            var response = await _http.SendAsync(request, HttpCompletionOption.ResponseContentRead).ConfigureAwait(false);
+            var respStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
-                var respStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return new KeyValuePair<int, string>((int)response.StatusCode, respStr);
             }
 
-            HandleWebException(response);
+            HandleWebException(response, respStr);
             return new KeyValuePair<int, string>(0, null);
         }
 
@@ -101,32 +102,33 @@ namespace TwitchLib.Api.Core.HttpCallHandlers
             return (int)response.StatusCode;
         }
 
-        private void HandleWebException(HttpResponseMessage errorResp)
+        private void HandleWebException(HttpResponseMessage errorResp, string respStr)
         {
             switch (errorResp.StatusCode)
             {
                 case HttpStatusCode.BadRequest:
-                    throw new BadRequestException("Your request failed because either: \n 1. Your ClientID was invalid/not set. \n 2. Your refresh token was invalid. \n 3. You requested a username when the server was expecting a user ID.");
+                    throw new BadRequestException("Your request failed because either: \n 1. Your ClientID was invalid/not set. \n 2. Your refresh token was invalid. \n 3. You requested a username when the server was expecting a user ID.", respStr);
                 case HttpStatusCode.Unauthorized:
                     var authenticateHeader = errorResp.Headers.WwwAuthenticate;
                     if (authenticateHeader == null || authenticateHeader.Count <= 0)
-                        throw new BadScopeException("Your request was blocked due to bad credentials (Do you have the right scope for your access token?).");
-                    throw new TokenExpiredException("Your request was blocked due to an expired Token. Please refresh your token and update your API instance settings.");
+                        throw new BadScopeException("Your request was blocked due to bad credentials (Do you have the right scope for your access token?).", respStr);
+                    throw new TokenExpiredException("Your request was blocked due to an expired Token. Please refresh your token and update your API instance settings.", respStr);
                 case HttpStatusCode.NotFound:
-                    throw new BadResourceException("The resource you tried to access was not valid.");
+                    throw new BadResourceException("The resource you tried to access was not valid.", respStr);
                 case (HttpStatusCode)429:
                     errorResp.Headers.TryGetValues("Ratelimit-Reset", out var resetTime);
-                    throw new TooManyRequestsException("You have reached your rate limit. Too many requests were made", resetTime.FirstOrDefault());
+                    throw new TooManyRequestsException("You have reached your rate limit. Too many requests were made", resetTime.FirstOrDefault(), respStr);
                 case HttpStatusCode.BadGateway:
-                    throw new BadGatewayException("The API answered with a 502 Bad Gateway. Please retry your request");
+                    throw new BadGatewayException("The API answered with a 502 Bad Gateway. Please retry your request", respStr);
                 case HttpStatusCode.GatewayTimeout:
-                    throw new GatewayTimeoutException("The API answered with a 504 Gateway Timeout. Please retry your request");
+                    throw new GatewayTimeoutException("The API answered with a 504 Gateway Timeout. Please retry your request", respStr);
                 case HttpStatusCode.InternalServerError:
-                    throw new InternalServerErrorException("The API answered with a 500 Internal Server Error. Please retry your request");
+                    throw new InternalServerErrorException("The API answered with a 500 Internal Server Error. Please retry your request", respStr);
                 case HttpStatusCode.Forbidden:
-                    throw new BadTokenException("The token provided in the request did not match the associated user. Make sure the token you're using is from the resource owner (streamer? viewer?)");
+                    throw new BadTokenException("The token provided in the request did not match the associated user. Make sure the token you're using is from the resource owner (streamer? viewer?)", respStr);
                 default:
-                    throw new HttpRequestException("Something went wrong during the request! Please try again later");
+                    var contentException = new Exception(respStr);
+                    throw new HttpRequestException("Something went wrong during the request! Please try again later", contentException);
             }
         }
 
