@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Predictions.CreatePrediction;
 
@@ -11,6 +11,6 @@ public class Outcome
     /// The question that the broadcaster is asking.
     /// The title is limited to a maximum of 45 characters.
     /// </summary>
-    [JsonProperty(PropertyName = "title")]
+    [JsonPropertyName("title")]
     public string Title { get; set; }
 }

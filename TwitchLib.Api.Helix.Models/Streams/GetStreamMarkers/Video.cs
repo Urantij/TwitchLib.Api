@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Streams.GetStreamMarkers;
 
@@ -10,12 +10,12 @@ public class Video
     /// <summary>
     /// An ID that identifies this video.
     /// </summary>
-    [JsonProperty(PropertyName = "video_id")]
+    [JsonPropertyName("video_id")]
     public string VideoId { get; protected set; }
 
     /// <summary>
     /// The list of markers in this video.
     /// </summary>
-    [JsonProperty(PropertyName = "markers")]
+    [JsonPropertyName("markers")]
     public Marker[] Markers { get; protected set; }
 }

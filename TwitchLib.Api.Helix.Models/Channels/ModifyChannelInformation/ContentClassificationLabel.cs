@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Core.Enums;
 
 namespace TwitchLib.Api.Helix.Models.Channels.ModifyChannelInformation;
@@ -14,13 +13,13 @@ public class ContentClassificationLabel
   /// <para>Can be one of the following values:
   /// DrugsIntoxication, SexualThemes, ViolentGraphic, Gambling, ProfanityVulgarity</para>
   /// </summary>
-  [JsonConverter(typeof(StringEnumConverter))]
-  [JsonProperty(PropertyName = "id")]
+  [JsonConverter(typeof(JsonStringEnumConverter))]
+  [JsonPropertyName("id")]
   public ContentClassificationLabelEnum Id { get; set; }
 
   /// <summary>
   /// <para>Boolean flag indicating whether the label should be enabled (true) or disabled (false) for the channel.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "is_enabled")]
+  [JsonPropertyName("is_enabled")]
   public bool IsEnabled { get; set; }
 }

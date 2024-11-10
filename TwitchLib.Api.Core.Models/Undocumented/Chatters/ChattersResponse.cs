@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Core.Models.Undocumented.Chatters
 {
     public class ChattersResponse
     {
-        [JsonProperty(PropertyName = "chatter_count")]
+        [JsonPropertyName("chatter_count")]
         public int ChatterCount { get; protected set; }
-        [JsonProperty(PropertyName = "chatters")]
+        [JsonPropertyName("chatters")]
         public Chatters Chatters { get; protected set; }
     }
 }

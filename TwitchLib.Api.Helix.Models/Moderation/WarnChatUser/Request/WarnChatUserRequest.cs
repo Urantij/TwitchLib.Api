@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.WarnChatUser.Request;
 
@@ -10,12 +10,12 @@ public class WarnChatUserRequest
     /// <summary>
     ///  The ID of the twitch user to be warned.
     /// </summary>
-    [JsonProperty(PropertyName = "user_id")]
+    [JsonPropertyName("user_id")]
     public string UserId { get; set; }
 
     /// <summary>
     /// A custom reason for the warning. Max 500 chars.
     /// </summary>
-    [JsonProperty(PropertyName = "reason")]
+    [JsonPropertyName("reason")]
     public string Reason { get; set; } = string.Empty;
 }

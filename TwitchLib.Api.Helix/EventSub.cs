@@ -1,7 +1,7 @@
 ﻿using System;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -69,7 +69,7 @@ namespace TwitchLib.Api.Helix
                             secret = webhookSecret
                         }
                     };
-                    return TwitchPostGenericAsync<CreateEventSubSubscriptionResponse>("/eventsub/subscriptions", ApiVersion.Helix, JsonConvert.SerializeObject(webhookBody), null, accessToken, clientId);
+                    return TwitchPostGenericAsync<CreateEventSubSubscriptionResponse>("/eventsub/subscriptions", ApiVersion.Helix, JsonSerializer.Serialize(webhookBody), null, accessToken, clientId);
                 case EventSubTransportMethod.Websocket:
                     if (string.IsNullOrWhiteSpace(websocketSessionId))
                         throw new BadParameterException("websocketSessionId must be set");
@@ -85,7 +85,7 @@ namespace TwitchLib.Api.Helix
                             session_id = websocketSessionId
                         }
                     };
-                    return TwitchPostGenericAsync<CreateEventSubSubscriptionResponse>("/eventsub/subscriptions", ApiVersion.Helix, JsonConvert.SerializeObject(websocketBody), null, accessToken, clientId);
+                    return TwitchPostGenericAsync<CreateEventSubSubscriptionResponse>("/eventsub/subscriptions", ApiVersion.Helix, JsonSerializer.Serialize(websocketBody), null, accessToken, clientId);
                 case EventSubTransportMethod.Conduit:
                     if (string.IsNullOrWhiteSpace(conduitId))
                         throw new BadParameterException("conduitId must be set");
@@ -101,7 +101,7 @@ namespace TwitchLib.Api.Helix
                             conduit_id = conduitId
                         }
                     };
-                    return TwitchPostGenericAsync<CreateEventSubSubscriptionResponse>("/eventsub/subscriptions", ApiVersion.Helix, JsonConvert.SerializeObject(conduitBody), null, accessToken, clientId);
+                    return TwitchPostGenericAsync<CreateEventSubSubscriptionResponse>("/eventsub/subscriptions", ApiVersion.Helix, JsonSerializer.Serialize(conduitBody), null, accessToken, clientId);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(method), method, null);
             }
@@ -181,7 +181,7 @@ namespace TwitchLib.Api.Helix
                 throw new BadParameterException("request.ShardCount must be greater than 0 and less or equal than 20000");
             
             return await TwitchPostGenericAsync<CreateConduitsResponse>("/eventsub/conduits", ApiVersion.Helix,
-                JsonConvert.SerializeObject(request), null, accessToken, clientId);
+                JsonSerializer.Serialize(request), null, accessToken, clientId);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace TwitchLib.Api.Helix
                 throw new BadParameterException("request.ShardCount must be greater than 0 and less or equal than 20000");
             
             return await TwitchPatchGenericAsync<UpdateConduitsResponse>("/eventsub/conduits", ApiVersion.Helix,
-                JsonConvert.SerializeObject(request), null, accessToken, clientId);
+                JsonSerializer.Serialize(request), null, accessToken, clientId);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace TwitchLib.Api.Helix
             }
             
             return await TwitchPatchGenericAsync<UpdateConduitShardsResponse>("/eventsub/conduits/shards",
-                ApiVersion.Helix, JsonConvert.SerializeObject(request), null, accessToken, clientId);
+                ApiVersion.Helix, JsonSerializer.Serialize(request), null, accessToken, clientId);
         }
     }
 }

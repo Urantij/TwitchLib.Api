@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -68,7 +68,7 @@ namespace TwitchLib.Api.Helix
         /// <returns cref="CreatePollResponse"></returns>
         public Task<CreatePollResponse> CreatePollAsync(CreatePollRequest request, string accessToken = null)
         {
-            return TwitchPostGenericAsync<CreatePollResponse>("/polls", ApiVersion.Helix, JsonConvert.SerializeObject(request), accessToken: accessToken);
+            return TwitchPostGenericAsync<CreatePollResponse>("/polls", ApiVersion.Helix, JsonSerializer.Serialize(request), accessToken: accessToken);
         }
         #endregion
 
@@ -89,7 +89,7 @@ namespace TwitchLib.Api.Helix
         /// <returns></returns>
         public Task<EndPollResponse> EndPollAsync(string broadcasterId, string id, PollStatusEnum status, string accessToken = null)
         {
-            var json = new JObject
+            var json = new JsonObject
             {
                 ["broadcaster_id"] = broadcasterId,
                 ["id"] = id,

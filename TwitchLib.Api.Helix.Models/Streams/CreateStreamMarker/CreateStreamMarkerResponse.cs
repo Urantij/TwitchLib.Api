@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Streams.CreateStreamMarker;
 
@@ -10,6 +10,6 @@ public class CreateStreamMarkerResponse
     /// <summary>
     /// A list that contains the single marker that you added.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public CreatedMarker[] Marker { get; protected set; }
 }

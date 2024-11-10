@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.BanUser;
 
@@ -10,6 +10,6 @@ public class BanUserResponse
     /// <summary>
     /// Identifies the user and type of ban.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public BannedUser[] Data { get; protected set; }
 }

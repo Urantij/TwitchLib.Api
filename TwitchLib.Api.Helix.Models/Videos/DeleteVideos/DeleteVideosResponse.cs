@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Videos.DeleteVideos;
 
@@ -10,6 +10,6 @@ public class DeleteVideosResponse
     /// <summary>
     /// The list of IDs of the videos that were deleted.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public string[] Data { get; protected set; }
 }

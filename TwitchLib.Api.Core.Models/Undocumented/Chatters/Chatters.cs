@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Core.Models.Undocumented.Chatters
 {
     public class Chatters
     {
-        [JsonProperty(PropertyName = "moderators")]
+        [JsonPropertyName("moderators")]
         public string[] Moderators { get; protected set; }
-        [JsonProperty(PropertyName = "staff")]
+        [JsonPropertyName("staff")]
         public string[] Staff { get; protected set; }
-        [JsonProperty(PropertyName = "admins")]
+        [JsonPropertyName("admins")]
         public string[] Admins { get; protected set; }
-        [JsonProperty(PropertyName = "global_mods")]
+        [JsonPropertyName("global_mods")]
         public string[] GlobalMods { get; protected set; }
-        [JsonProperty(PropertyName = "vips")]
+        [JsonPropertyName("vips")]
         public string[] VIP { get; protected set; }
-        [JsonProperty(PropertyName = "viewers")]
+        [JsonPropertyName("viewers")]
         public string[] Viewers { get; protected set; }
     }
 }

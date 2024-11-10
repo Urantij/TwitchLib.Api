@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Streams.GetFollowedStreams;
@@ -11,12 +11,12 @@ public class GetFollowedStreamsResponse
     /// <summary>
     /// The list of live streams of broadcasters that the specified user follows.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Stream[] Data { get; protected set; }
 
     /// <summary>
     /// The information used to page through the list of results.
     /// </summary>
-    [JsonProperty(PropertyName = "pagination")]
+    [JsonPropertyName("pagination")]
     public Pagination Pagination { get; protected set; }
 }

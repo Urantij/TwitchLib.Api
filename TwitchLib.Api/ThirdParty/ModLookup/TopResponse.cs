@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.ThirdParty.ModLookup
 {
     public class TopResponse
     {
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public int Status { get; protected set; }
-        [JsonProperty(PropertyName = "top")]
+        [JsonPropertyName("top")]
         public Top Top { get; protected set; }
     }
 }

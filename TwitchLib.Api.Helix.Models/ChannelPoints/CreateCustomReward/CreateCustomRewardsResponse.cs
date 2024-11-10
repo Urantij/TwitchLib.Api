@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 
@@ -10,6 +10,6 @@ public class CreateCustomRewardsResponse
   /// <summary>
   /// A list that contains the single custom reward you created.
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public CustomReward[] Data { get; protected set; }
 }

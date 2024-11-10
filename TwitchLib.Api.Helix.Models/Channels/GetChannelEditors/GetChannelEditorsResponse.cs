@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.GetChannelEditors;
 
@@ -11,6 +11,6 @@ public class GetChannelEditorsResponse
   /// <para>A list of users that are editors for the specified broadcaster.</para>
   /// <para>The list is empty if the broadcaster doesn’t have editors.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public ChannelEditor[] Data { get; protected set; }
 }

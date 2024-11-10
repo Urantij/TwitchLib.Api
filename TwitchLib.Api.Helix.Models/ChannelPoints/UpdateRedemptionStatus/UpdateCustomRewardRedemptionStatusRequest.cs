@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Core.Enums;
 
 namespace TwitchLib.Api.Helix.Models.ChannelPoints.UpdateCustomRewardRedemptionStatus;
@@ -12,7 +11,7 @@ public class UpdateCustomRewardRedemptionStatusRequest
   /// <summary>
   /// The status to set the redemption to. Possible values are: CANCELED, FULFILLED. Setting the status to CANCELED refunds the user’s channel points.
   /// </summary>
-  [JsonConverter(typeof(StringEnumConverter))]
-  [JsonProperty(PropertyName = "status")]
+  [JsonConverter(typeof(JsonStringEnumConverter))]
+  [JsonPropertyName("status")]
   public CustomRewardRedemptionStatus Status { get; set; }
 }

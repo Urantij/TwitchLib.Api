@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Teams;
 
@@ -10,6 +10,6 @@ public class Team : TeamBase
     /// <summary>
     /// The list of team members.
     /// </summary>
-    [JsonProperty(PropertyName = "users")]
+    [JsonPropertyName("users")]
     public TeamMember[] Users { get; protected set; }
 }

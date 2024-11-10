@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -71,7 +71,7 @@ namespace TwitchLib.Api.Helix
                 new("broadcaster_id", broadcasterId)
             };
 
-            var response = await TwitchPatchAsync("/channels", ApiVersion.Helix, JsonConvert.SerializeObject(request), getParams, accessToken);
+            var response = await TwitchPatchAsync("/channels", ApiVersion.Helix, JsonSerializer.Serialize(request), getParams, accessToken);
 
             // Successfully updated the channel's properties if return code is 204 (No Content)
             return response.Key == 204;
@@ -347,7 +347,7 @@ namespace TwitchLib.Api.Helix
         /// <returns cref="StartCommercialResponse"></returns>
         public Task<StartCommercialResponse> StartCommercialAsync(StartCommercialRequest request, string accessToken = null)
         {
-            return TwitchPostGenericAsync<StartCommercialResponse>("/channels/commercial", ApiVersion.Helix, JsonConvert.SerializeObject(request), null, accessToken);
+            return TwitchPostGenericAsync<StartCommercialResponse>("/channels/commercial", ApiVersion.Helix, JsonSerializer.Serialize(request), null, accessToken);
         }
 
         #endregion

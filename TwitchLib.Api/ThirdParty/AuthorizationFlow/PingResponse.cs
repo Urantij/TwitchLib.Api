@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json.Nodes;
 using TwitchLib.Api.Core.Enums;
 
 namespace TwitchLib.Api.ThirdParty.AuthorizationFlow
@@ -20,21 +21,24 @@ namespace TwitchLib.Api.ThirdParty.AuthorizationFlow
 
         public PingResponse(string jsonStr)
         {
-            var json = JObject.Parse(jsonStr);
-            Success = bool.Parse(json.SelectToken("success").ToString());
+            var json = JsonNode.Parse(jsonStr);
+            if (json == null)
+                throw new Exception($"{nameof(PingResponse)} unable to parse json");
+            
+            Success = bool.Parse(json["success"].ToString());
             if(!Success)
             {
-                Error = int.Parse(json.SelectToken("error").ToString());
-                Message = json.SelectToken("message").ToString();
+                Error = int.Parse(json["error"].ToString());
+                Message = json["message"].ToString();
             } else
             {
                 Scopes = new List<AuthScopes>();
-                foreach (var scope in json.SelectToken("scopes"))
+                foreach (var scope in json["scopes"].AsArray())
                     Scopes.Add(Core.Common.Helpers.StringToScope(scope.ToString()));
-                Token = json.SelectToken("token").ToString();
-                Refresh = json.SelectToken("refresh").ToString();
-                Username = json.SelectToken("username").ToString();
-                ClientId = json.SelectToken("client_id").ToString();
+                Token = json["token"].ToString();
+                Refresh = json["refresh"].ToString();
+                Username = json["username"].ToString();
+                ClientId = json["client_id"].ToString();
             }
         }
     }

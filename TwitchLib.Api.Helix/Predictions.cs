@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -68,7 +68,7 @@ namespace TwitchLib.Api.Helix
         /// <returns cref="CreatePredictionResponse"></returns>
         public Task<CreatePredictionResponse> CreatePredictionAsync(CreatePredictionRequest request, string accessToken = null)
         {
-            return TwitchPostGenericAsync<CreatePredictionResponse>("/predictions", ApiVersion.Helix, JsonConvert.SerializeObject(request), accessToken: accessToken);
+            return TwitchPostGenericAsync<CreatePredictionResponse>("/predictions", ApiVersion.Helix, JsonSerializer.Serialize(request), accessToken: accessToken);
         }
         #endregion
 
@@ -96,7 +96,7 @@ namespace TwitchLib.Api.Helix
         /// <returns cref="EndPredictionResponse"></returns>
         public Task<EndPredictionResponse> EndPredictionAsync(string broadcasterId, string id, PredictionEndStatus status, string winningOutcomeId = null, string accessToken = null)
         {
-            var json = new JObject
+            var json = new JsonObject
             {
                 ["broadcaster_id"] = broadcasterId,
                 ["id"] = id,

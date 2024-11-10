@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Bits.ExtensionBitsProducts;
 
@@ -10,12 +10,12 @@ public class Cost
     /// <summary>
     /// The product’s price.
     /// </summary>
-    [JsonProperty(PropertyName = "amount")]
+    [JsonPropertyName("amount")]
     public int Amount { get; protected set; }
 
     /// <summary>
     /// The type of currency.
     /// </summary>
-    [JsonProperty(PropertyName = "type")]
+    [JsonPropertyName("type")]
     public string Type { get; protected set; }
 }

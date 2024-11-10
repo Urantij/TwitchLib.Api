@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.SendChatMessage
 {
@@ -7,17 +7,20 @@ namespace TwitchLib.Api.Helix.Models.Channels.SendChatMessage
         /// <summary>
         /// The message id for the message that was sent.
         /// </summary>
-        [JsonProperty(PropertyName = "message_id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("message_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string MessageId { get; set; } = string.Empty;
         /// <summary>
         /// If the message passed all checks and was sent.
         /// </summary>
-        [JsonProperty(PropertyName = "is_sent", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("is_sent")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool IsSent { get; set; }
         /// <summary>
         /// 	The reason the message was dropped, if any.
         /// </summary>
-        [JsonProperty(PropertyName = "drop_reason", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("drop_reason")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DropReason DropReason { get; set; }
 
     }

@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -243,7 +244,7 @@ namespace TwitchLib.Api.Helix
                         throw new ArgumentOutOfRangeException(nameof(ExtensionType));
                 }
 
-            var json = new JObject();
+            var json = new JsonObject();
             var p = new UpdateUserExtensionsRequest();
 
             if (panels.Count > 0)
@@ -255,7 +256,7 @@ namespace TwitchLib.Api.Helix
             if (components.Count > 0)
                 p.Component = components;
 
-            json.Add(new JProperty("data", JObject.FromObject(p)));
+            json.Add("data", JsonSerializer.SerializeToNode(p));
             var payload = json.ToString();
 
             return TwitchPutGenericAsync<GetUserActiveExtensionsResponse>("/users/extensions", ApiVersion.Helix, payload, accessToken: accessToken);

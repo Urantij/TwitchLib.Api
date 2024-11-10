@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Streams.GetStreamKey;
 
@@ -10,6 +10,6 @@ public class GetStreamKeyResponse
     /// <summary>
     /// A list that contains the channel’s stream key.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public StreamKey[] Streams { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.AutomodSettings;
 
@@ -11,6 +11,6 @@ public class GetAutomodSettingsResponse
     /// The list of AutoMod settings. 
     /// The list contains a single object that contains all the AutoMod settings.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public AutomodSettingsResponseModel[] Data { get; protected set; }
 }

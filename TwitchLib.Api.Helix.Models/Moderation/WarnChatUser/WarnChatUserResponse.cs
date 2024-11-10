@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.WarnChatUser;
 
@@ -10,7 +10,7 @@ public class WarnChatUserResponse
     /// <summary>
     /// A list that contains information about the warning.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public WarnedChatUser[] Data { get; protected set; }
 }
 

@@ -1,19 +1,19 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.GetModeratorEvents
 {
     public class ModeratorEvent
     {
-        [JsonProperty(PropertyName = "id")]
+        [JsonPropertyName("id")]
         public string Id { get; protected set; }
-        [JsonProperty(PropertyName = "event_type")]
+        [JsonPropertyName("event_type")]
         public string EventType { get; protected set; }
-        [JsonProperty(PropertyName = "event_timestamp")]
+        [JsonPropertyName("event_timestamp")]
         public DateTime EventTimestamp { get; protected set; }
-        [JsonProperty(PropertyName = "version")]
+        [JsonPropertyName("version")]
         public string Version { get; protected set; }
-        [JsonProperty(PropertyName = "event_data")]
+        [JsonPropertyName("event_data")]
         public EventData EventData { get; protected set; }
     }
 }

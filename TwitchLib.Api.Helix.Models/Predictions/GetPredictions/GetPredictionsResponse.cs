@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Predictions.GetPredictions
 {
     public class GetPredictionsResponse
     {
-        [JsonProperty(PropertyName = "data")]
+        [JsonPropertyName("data")]
         public Prediction[] Data { get; protected set; }
-        [JsonProperty(PropertyName = "pagination")]
+        [JsonPropertyName("pagination")]
         public Pagination Pagination { get; protected set; }
     }
 }

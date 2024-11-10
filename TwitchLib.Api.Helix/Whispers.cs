@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -51,7 +51,7 @@ namespace TwitchLib.Api.Helix
             };
 
             // This should be updated to have a Request Class in the future.
-            var json = new JObject
+            var json = new JsonObject
             {
                 ["message"] = message
             };

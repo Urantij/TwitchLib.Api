@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Tags
 {
     public class GetAllStreamTagsResponse
     {
-        [JsonProperty(PropertyName = "data")]
+        [JsonPropertyName("data")]
         public Tag[] Data { get; protected set; }
-        [JsonProperty(PropertyName = "pagination")]
+        [JsonPropertyName("pagination")]
         public Pagination Pagination { get; protected set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.ChannelPoints.UpdateRedemptionStatus;
 
@@ -10,6 +10,6 @@ public class UpdateRedemptionStatusResponse
   /// <summary>
   /// The state of the redemption. Possible values are: CANCELED, FULFILLED, UNFULFILLED
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public RewardRedemption[] Data { get; protected set; }
 }

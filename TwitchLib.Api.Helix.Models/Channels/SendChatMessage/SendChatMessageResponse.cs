@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.SendChatMessage
 {
@@ -7,7 +7,8 @@ namespace TwitchLib.Api.Helix.Models.Channels.SendChatMessage
         /// <summary>
         /// The data for the chat message
         /// </summary>
-        [JsonProperty(PropertyName = "data", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("data")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public ChatMessageInfo[] Data { get; protected set; }
     }
 }

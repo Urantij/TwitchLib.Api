@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Channels.GetChannelVIPs;
@@ -12,12 +12,12 @@ public class GetChannelVIPsResponse
   /// <para>The list of VIPs.</para>
   /// <para>The list is empty if the channel doesn’t have VIP users. The list does not include the broadcaster.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public ChannelVIPsResponseModel[] Data { get; protected set; }
 
   /// <summary>
   /// <para>Contains the information used to page through the list of results.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "pagination")]
+  [JsonPropertyName("pagination")]
   public Pagination Pagination { get; protected set; }
 }

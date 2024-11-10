@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.ContentClassificationLabels;
 
@@ -10,18 +10,18 @@ public class ContentClassificationLabel
   /// <summary>
   /// <para>Unique identifier for the Content Classification Labels.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "id")]
+  [JsonPropertyName("id")]
   public string ID { get; set; }
 
   /// <summary>
   /// <para>Localized description of the Content Classification Labels.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "description")]
+  [JsonPropertyName("description")]
   public string Description { get; set; }
 
   /// <summary>
   /// <para>Localized name of the Content Classification Labels.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "name")]
+  [JsonPropertyName("name")]
   public string Name { get; set; }
 }

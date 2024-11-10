@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Polls.CreatePoll;
 
@@ -11,6 +11,6 @@ public class Choice
     /// One of the choices the viewer may select. 
     /// The choice may contain a maximum of 25 characters.
     /// </summary>
-    [JsonProperty(PropertyName = "title")]
+    [JsonPropertyName("title")]
     public string Title { get; set; }
 }

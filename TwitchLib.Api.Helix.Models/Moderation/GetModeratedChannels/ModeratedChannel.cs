@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,16 +13,16 @@ public class ModeratedChannel
     /// <summary>
     /// An ID that uniquely identifies the channel this user can moderate.
     /// </summary>
-    [JsonProperty(PropertyName = "broadcaster_id")]
+    [JsonPropertyName("broadcaster_id")]
     public string BroadcasterId { get; protected set; }
     /// <summary>
     /// The channel’s login name.
     /// </summary>
-    [JsonProperty(PropertyName = "broadcaster_login")]
+    [JsonPropertyName("broadcaster_login")]
     public string BroadcasterLogin { get; protected set; }
     /// <summary>
     /// The channels’ display name.
     /// </summary>
-    [JsonProperty(PropertyName = "broadcaster_name")]
+    [JsonPropertyName("broadcaster_name")]
     public string BroadcasterName { get; protected set; }
 }

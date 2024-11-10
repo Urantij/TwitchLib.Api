@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 
 namespace TwitchLib.Api.Helix.Models.Common;
@@ -11,12 +11,12 @@ public class DateRange
   /// <summary>
   /// <para>The reporting period's start date.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "started_at")]
+  [JsonPropertyName("started_at")]
   public DateTime StartedAt { get; protected set; }
 
   /// <summary>
   /// <para>The reporting period's end date.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "ended_at")]
+  [JsonPropertyName("ended_at")]
   public DateTime EndedAt { get; protected set; }
 }

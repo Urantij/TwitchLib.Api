@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Polls.EndPoll;
 
@@ -10,6 +10,6 @@ public class EndPollResponse
     /// <summary>
     /// A list that contains the poll that you ended.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Poll[] Data { get; protected set; }
 }

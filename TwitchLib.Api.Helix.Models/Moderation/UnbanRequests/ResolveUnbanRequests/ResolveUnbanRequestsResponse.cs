@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +13,6 @@ public class ResolveUnbanRequestsResponse
     /// <summary>
     /// Contains information about the channel's unban request.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public UnbanRequest[] Data { get; protected set; }
 }

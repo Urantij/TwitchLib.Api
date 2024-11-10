@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Users.Internal;
 
@@ -11,18 +11,18 @@ public class ActiveExtensions
     /// <summary>
     /// A dictionary that contains the data for a panel extension. 
     /// </summary>
-    [JsonProperty(PropertyName = "panel")]
+    [JsonPropertyName("panel")]
     public Dictionary<string, UserActiveExtension> Panel { get; protected set; }
 
     /// <summary>
     /// A dictionary that contains the data for a video-overlay extension. 
     /// </summary>
-    [JsonProperty(PropertyName = "overlay")]
+    [JsonPropertyName("overlay")]
     public Dictionary<string, UserActiveExtension> Overlay { get; protected set; }
 
     /// <summary>
     /// A dictionary that contains the data for a video-component extension.
     /// </summary>
-    [JsonProperty(PropertyName = "component")]
+    [JsonPropertyName("component")]
     public Dictionary<string, UserActiveExtension> Component { get; protected set; }
 }

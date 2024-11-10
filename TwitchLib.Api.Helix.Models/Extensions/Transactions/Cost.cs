@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,12 +13,12 @@ public class Cost
     /// <summary>
     /// The amount exchanged for the digital product.
     /// </summary>
-    [JsonProperty(PropertyName = "amount")]
+    [JsonPropertyName("amount")]
     public int Amount { get; protected set; }
 
     /// <summary>
     /// The type of currency exchanged. 
     /// </summary>
-    [JsonProperty(PropertyName = "type")]
+    [JsonPropertyName("type")]
     public string Type { get; protected set; }
 }

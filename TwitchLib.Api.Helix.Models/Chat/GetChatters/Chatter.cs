@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Chat.GetChatters;
 
@@ -10,16 +10,16 @@ public class Chatter
     /// <summary>
     /// The ID of a user that’s connected to the broadcaster’s chat room.
     /// </summary>
-    [JsonProperty("user_id")]
+    [JsonPropertyName("user_id")]
     public string UserId { get; protected set; }
     /// <summary>
     /// The login name of a user that’s connected to the broadcaster’s chat room.
     /// </summary>
-    [JsonProperty("user_login")]
+    [JsonPropertyName("user_login")]
     public string UserLogin { get; protected set; }
     /// <summary>
     /// The display name of a user that’s connected to the broadcaster’s chat room.
     /// </summary>
-    [JsonProperty("user_name")]
+    [JsonPropertyName("user_name")]
     public string UserName { get; protected set; }
 }

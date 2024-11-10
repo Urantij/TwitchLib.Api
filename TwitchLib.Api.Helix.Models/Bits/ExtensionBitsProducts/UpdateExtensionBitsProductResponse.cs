@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Bits.ExtensionBitsProducts;
 
@@ -10,6 +10,6 @@ public class UpdateExtensionBitsProductResponse
     /// <summary>
     /// A list of Bits products that the extension created. The list is in ascending SKU order.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public ExtensionBitsProduct[] Data { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Games;
 
@@ -10,6 +10,6 @@ public class GetGamesResponse
     /// <summary>
     /// The list of categories and games. The list is empty if the specified categories and games weren’t found.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Game[] Data { get; protected set; }
 }

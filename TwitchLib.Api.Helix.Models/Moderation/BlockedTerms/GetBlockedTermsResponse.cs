@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.BlockedTerms;
@@ -12,12 +12,12 @@ public class GetBlockedTermsResponse
     /// The list of blocked terms. 
     /// The list is in descending order of when they were created.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public BlockedTerm[] Data { get; protected set; }
 
     /// <summary>
     /// Contains the information used to page through the list of results.
     /// </summary>
-    [JsonProperty(PropertyName = "pagination")]
+    [JsonPropertyName("pagination")]
     public Pagination Pagination { get; protected set; }
 }

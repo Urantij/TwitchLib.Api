@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Charity.GetCharityCampaignDonations;
@@ -14,13 +14,13 @@ public class GetCharityCampaignDonationsResponse
   /// <para>The list is empty if the broadcaster is not currently running a charity campaign.</para>
   /// <para>The donation information is not available after the campaign ends.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public CharityCampaignDonationsResponseModel[] Data { get; protected set; }
 
   /// <summary>
   /// <para>Contains the information used to page through the list of results.</para>
   /// <para>The object is empty if there are no more pages left to page through.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "pagination")]
+  [JsonPropertyName("pagination")]
   public Pagination Pagination { get; protected set; }
 }

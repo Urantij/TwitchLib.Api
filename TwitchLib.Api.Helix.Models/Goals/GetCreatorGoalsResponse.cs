@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Goals;
 
@@ -10,6 +10,6 @@ public class GetCreatorGoalsResponse
     /// <summary>
     /// The list of goals.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public CreatorGoal[] Data { get; protected set; }
 }

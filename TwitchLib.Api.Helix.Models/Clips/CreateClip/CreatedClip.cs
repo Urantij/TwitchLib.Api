@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Clips.CreateClip;
 
@@ -11,12 +11,12 @@ public class CreatedClip
   /// <para>A URL that you can use to edit the clip’s title, identify the part of the clip to publish, and publish the clip.</para>
   /// <para> The URL is valid for up to 24 hours or until the clip is published, whichever comes first.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "edit_url")]
+  [JsonPropertyName("edit_url")]
   public string EditUrl { get; protected set; }
 
   /// <summary>
   /// An ID that uniquely identifies the clip.
   /// </summary>
-  [JsonProperty(PropertyName = "id")]
+  [JsonPropertyName("id")]
   public string Id { get; protected set; }
 }

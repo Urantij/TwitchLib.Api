@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Extensions.ReleasedExtensions;
 
@@ -10,18 +10,18 @@ public class Panel
     /// <summary>
     /// The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.
     /// </summary>
-    [JsonProperty(PropertyName = "viewer_url")]
+    [JsonPropertyName("viewer_url")]
     public string ViewerUrl { get; protected set; }
 
     /// <summary>
     /// The height, in pixels, of the panel component that the extension is rendered in.
     /// </summary>
-    [JsonProperty(PropertyName = "height")]
+    [JsonPropertyName("height")]
     public int Height { get; protected set; }
 
     /// <summary>
     /// A Boolean value that determines whether the extension can link to non-Twitch domains.
     /// </summary>
-    [JsonProperty(PropertyName = "can_link_external_content")]
+    [JsonPropertyName("can_link_external_content")]
     public bool CanLinkExternalContent { get; protected set; }
 }

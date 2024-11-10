@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Web;
 using TwitchLib.Api.Core;
@@ -245,7 +245,7 @@ namespace TwitchLib.Api.Helix
                 new KeyValuePair<string, string>("moderator_id", moderatorId)
             };
 
-            return TwitchPatchGenericAsync<UpdateChatSettingsResponse>("/chat/settings", ApiVersion.Helix, JsonConvert.SerializeObject(settings), getParams, accessToken);
+            return TwitchPatchGenericAsync<UpdateChatSettingsResponse>("/chat/settings", ApiVersion.Helix, JsonSerializer.Serialize(settings), getParams, accessToken);
         }
 
         #endregion
@@ -286,7 +286,7 @@ namespace TwitchLib.Api.Helix
             };
 
             // This should be updated to have a Request Class in the future.
-            var json = new JObject
+            var json = new JsonObject()
             {
                 ["message"] = message,
                 ["color"] = color.Value
@@ -349,7 +349,7 @@ namespace TwitchLib.Api.Helix
             if (string.IsNullOrEmpty(message))
                 throw new BadParameterException("message must be set");
 
-            var json = new JObject
+            var json = new JsonObject()
             {
                 ["broadcaster_id"] = broadcasterId,
                 ["sender_id"] = senderId,

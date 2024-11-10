@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Users.GetUserBlockList;
 
@@ -10,18 +10,18 @@ public class BlockedUser
     /// <summary>
     /// An ID that identifies the blocked user.
     /// </summary>
-    [JsonProperty(PropertyName = "user_id")]
+    [JsonPropertyName("user_id")]
     public string Id { get; protected set; }
 
     /// <summary>
     /// The blocked user’s login name.
     /// </summary>
-    [JsonProperty(PropertyName = "user_login")]
+    [JsonPropertyName("user_login")]
     public string UserLogin { get; protected set; }
 
     /// <summary>
     /// The blocked user’s display name.
     /// </summary>
-    [JsonProperty(PropertyName = "display_name")]
+    [JsonPropertyName("display_name")]
     public string DisplayName { get; protected set; }
 }

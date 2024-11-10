@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Subscriptions;
@@ -11,24 +11,24 @@ public class GetBroadcasterSubscriptionsResponse
     /// <summary>
     /// The list of users that subscribe to the broadcaster.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Subscription[] Data { get; protected set; }
 
     /// <summary>
     /// Contains the information used to page through the list of results.
     /// </summary>
-    [JsonProperty(PropertyName = "pagination")]
+    [JsonPropertyName("pagination")]
     public Pagination Pagination { get; protected set; }
 
     /// <summary>
     /// The total number of users that subscribe to this broadcaster.
     /// </summary>
-    [JsonProperty(PropertyName = "total")]
+    [JsonPropertyName("total")]
     public int Total { get; protected set; }
 
     /// <summary>
     /// The current number of subscriber points earned by this broadcaster.
     /// </summary>
-    [JsonProperty(PropertyName = "points")]
+    [JsonPropertyName("points")]
     public int Points { get; protected set; }
 }

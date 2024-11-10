@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.AutomodSettings;
 
@@ -10,54 +10,54 @@ public class AutomodSettings
     /// <summary>
     /// The default AutoMod level for the broadcaster.
     /// </summary>
-    [JsonProperty(PropertyName = "overall_level")]
+    [JsonPropertyName("overall_level")]
     public int? OverallLevel;
 
     /// <summary>
     /// The Automod level for discrimination against disability.
     /// </summary>
-    [JsonProperty(PropertyName = "disability")]
+    [JsonPropertyName("disability")]
     public int? Disability;
 
     /// <summary>
     /// The Automod level for hostility involving aggression.
     /// </summary>
-    [JsonProperty(PropertyName = "aggression")]
+    [JsonPropertyName("aggression")]
     public int? Aggression;
 
     /// <summary>
     /// The AutoMod level for discrimination based on sexuality, sex, or gender.
     /// </summary>
-    [JsonProperty(PropertyName = "sexuality_sex_or_gender")]
+    [JsonPropertyName("sexuality_sex_or_gender")]
     public int? SexualitySexOrGender;
 
     /// <summary>
     /// The Automod level for discrimination against women.
     /// </summary>
-    [JsonProperty(PropertyName = "misogyny")]
+    [JsonPropertyName("misogyny")]
     public int? Misogyny;
 
     /// <summary>
     /// The Automod level for hostility involving name calling or insults.
     /// </summary>
-    [JsonProperty(PropertyName = "bullying")]
+    [JsonPropertyName("bullying")]
     public int? Bullying;
 
     /// <summary>
     /// The Automod level for profanity.
     /// </summary>
-    [JsonProperty(PropertyName = "swearing")]
+    [JsonPropertyName("swearing")]
     public int? Swearing;
 
     /// <summary>
     /// The Automod level for racial discrimination.
     /// </summary>
-    [JsonProperty(PropertyName = "race_ethnicity_or_religion")]
+    [JsonPropertyName("race_ethnicity_or_religion")]
     public int? RaceEthnicityOrReligion;
 
     /// <summary>
     /// The Automod level for sexual content.
     /// </summary>
-    [JsonProperty(PropertyName = "sex_based_terms")]
+    [JsonPropertyName("sex_based_terms")]
     public int? SexBasedTerms;
 }

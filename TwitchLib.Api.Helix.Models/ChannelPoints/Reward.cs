@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.ChannelPoints;
 
@@ -10,24 +10,24 @@ public class Reward
   /// <summary>
   /// The ID that uniquely identifies the redeemed reward.
   /// </summary>
-  [JsonProperty(PropertyName = "id")]
+  [JsonPropertyName("id")]
   public string Id { get; protected set; }
 
   /// <summary>
   /// The reward’s title.
   /// </summary>
-  [JsonProperty(PropertyName = "title")]
+  [JsonPropertyName("title")]
   public string Title { get; protected set; }
 
   /// <summary>
   /// The prompt displayed to the viewer if user input is required.
   /// </summary>
-  [JsonProperty(PropertyName = "prompt")]
+  [JsonPropertyName("prompt")]
   public string Prompt { get; protected set; }
 
   /// <summary>
   /// The reward’s cost, in Channel Points.
   /// </summary>
-  [JsonProperty(PropertyName = "cost")]
+  [JsonPropertyName("cost")]
   public int Cost { get; protected set; }
 }

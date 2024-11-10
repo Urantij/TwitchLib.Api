@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.EventSub.Conduits.UpdateConduits;
 
@@ -10,6 +10,6 @@ public class UpdateConduitsResponse
     /// <summary>
     /// <para>List of information about the client’s conduits.</para>
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Conduit[] Data { get; protected set; }
 }

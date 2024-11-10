@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Schedule;
 
@@ -10,12 +10,12 @@ public class Category
     /// <summary>
     /// An ID that identifies the category that best represents the content.
     /// </summary>
-    [JsonProperty("id")]
+    [JsonPropertyName("id")]
     public string Id { get; protected set; }
 
     /// <summary>
     /// The name of the category.
     /// </summary>
-    [JsonProperty("name")]
+    [JsonPropertyName("name")]
     public string Name { get; protected set; }
 }

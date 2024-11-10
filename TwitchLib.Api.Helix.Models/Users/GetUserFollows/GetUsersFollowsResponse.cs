@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Users.GetUserFollows
 {
     public class GetUsersFollowsResponse
     {
-        [JsonProperty(PropertyName = "data")]
+        [JsonPropertyName("data")]
         public Follow[] Follows { get; protected set; }
-        [JsonProperty(PropertyName = "pagination")]
+        [JsonPropertyName("pagination")]
         public Pagination Pagination { get; protected set; }
-        [JsonProperty(PropertyName = "total")]
+        [JsonPropertyName("total")]
         public long TotalFollows { get; protected set; }
     }
 }

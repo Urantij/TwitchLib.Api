@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Teams;
 
@@ -10,6 +10,6 @@ public class GetChannelTeamsResponse
     /// <summary>
     /// The list of teams that the broadcaster is a member of.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public ChannelTeam[] ChannelTeams { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Analytics;
@@ -16,7 +16,7 @@ public class GetGameAnalyticsResponse
   /// <para>A report is available only if the game was broadcast for at least 5 hours over the reporting period.</para>
   /// <para>The array is empty if there are no reports.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public GameAnalytics[] Data { get; protected set; }
 
   /// <summary>
@@ -24,6 +24,6 @@ public class GetGameAnalyticsResponse
   /// <para>The object is empty if there are no more pages left to page through.</para>
   /// <para>Use the cursor to set the GetGameAnalytics request’s after query parameter.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "pagination")]
+  [JsonPropertyName("pagination")]
   public Pagination Pagination { get; protected set; }
 }

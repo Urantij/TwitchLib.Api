@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,11 +14,11 @@ public class GetUnbanRequestsResponse
     /// <summary>
     /// A list that contains information about the channel's unban requests.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public UnbanRequest[] Data { get; protected set; }
     /// <summary>
     /// Contains information used to page through a list of results. The object is empty if there are no more pages left to page through.
     /// </summary>
-    [JsonProperty(PropertyName = "pagination")]
+    [JsonPropertyName("pagination")]
     public Pagination Pagination { get; protected set; }
 }

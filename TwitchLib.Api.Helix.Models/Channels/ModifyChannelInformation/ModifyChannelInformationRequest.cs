@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.ModifyChannelInformation;
 
@@ -6,7 +6,8 @@ namespace TwitchLib.Api.Helix.Models.Channels.ModifyChannelInformation;
 /// <para>A request to update a channel's properties</para>
 /// <para>All fields are optional but you must specify at least one field.</para>
 /// </summary>
-[JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
+// https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/migrate-from-newtonsoft?pivots=dotnet-8-0#jsonobjectattribute
+// [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
 public class ModifyChannelInformationRequest
 {
   /// <summary>
@@ -14,7 +15,8 @@ public class ModifyChannelInformationRequest
   /// <para>The game will not updated if the ID is not a game ID that Twitch recognizes.</para>
   /// <para>To unset this field, use “0” or “” (an empty string).</para>
   /// </summary>
-  [JsonProperty(PropertyName = "game_id", NullValueHandling = NullValueHandling.Ignore)]
+  [JsonPropertyName("game_id")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public string GameId { get; set; }
 
   /// <summary>
@@ -23,14 +25,16 @@ public class ModifyChannelInformationRequest
   /// <para>Set the value to “other” if the broadcaster’s preferred language is not a Twitch supported language.</para>
   /// <para>The language will not updated if the language code is not a Twitch supported language.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "broadcaster_language", NullValueHandling = NullValueHandling.Ignore)]
+  [JsonPropertyName("broadcaster_language")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public string BroadcasterLanguage { get; set; }
 
   /// <summary>
   /// <para>The title of the broadcaster's stream.</para>
   /// <para>You may not set this field to an empty string.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "title", NullValueHandling = NullValueHandling.Ignore)]
+  [JsonPropertyName("title")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public string Title { get; set; }
 
   /// <summary>
@@ -38,7 +42,8 @@ public class ModifyChannelInformationRequest
   /// <para>The maximum delay is 900 seconds (15 minutes).</para>
   /// <para><b>Only users with Partner status may set this field.</b></para>
   /// </summary>
-  [JsonProperty(PropertyName = "delay", NullValueHandling = NullValueHandling.Ignore)]
+  [JsonPropertyName("delay")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public int? Delay { get; set; }
 
   /// <summary>
@@ -46,18 +51,21 @@ public class ModifyChannelInformationRequest
   /// <para>A channel may specify a maximum of 10 tags. Each tag is limited to a maximum of 25 characters and may not be an empty string or contain spaces or special characters. Tags are case insensitive. For readability, consider using camelCasing or PascalCasing.</para>
   /// <para>To remove all tags from the channel, set tags to an empty array.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "tags", NullValueHandling = NullValueHandling.Ignore)]
+  [JsonPropertyName("tags")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public string[] Tags { get; set; }
 
   /// <summary>
   /// <para>List of labels that should be set as the Channel’s Content Classificiation Labels (CCL).</para>
   /// </summary>
-  [JsonProperty(PropertyName = "content_classification_labels", NullValueHandling = NullValueHandling.Ignore)]
+  [JsonPropertyName("content_classification_labels")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public ContentClassificationLabel[] ContentClassificationLabels { get; set; }
 
   /// <summary>
   /// <para>Boolean flag indicating if the channel has branded content.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "is_branded_content", NullValueHandling = NullValueHandling.Ignore)]
+  [JsonPropertyName("is_branded_content")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public bool IsBrandedContent { get; set; }
 }

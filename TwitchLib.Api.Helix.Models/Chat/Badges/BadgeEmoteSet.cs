@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Chat.Badges;
 
@@ -10,12 +10,12 @@ public class BadgeEmoteSet
     /// <summary>
     /// An ID that identifies this set of chat badges. For example, Bits or Subscriber.
     /// </summary>
-    [JsonProperty(PropertyName = "set_id")]
+    [JsonPropertyName("set_id")]
     public string SetId { get; protected set; }
 
     /// <summary>
     /// The list of chat badges in this set.
     /// </summary>
-    [JsonProperty(PropertyName = "versions")]
+    [JsonPropertyName("versions")]
     public BadgeVersion[] Versions { get; protected set; }
 }

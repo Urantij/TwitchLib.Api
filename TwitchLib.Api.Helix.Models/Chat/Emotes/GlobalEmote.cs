@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Chat.Emotes;
 
@@ -10,6 +10,6 @@ public class GlobalEmote : Emote
     /// <summary>
     /// Contains the image URLs for the emote.
     /// </summary>
-    [JsonProperty("images")]
+    [JsonPropertyName("images")]
     public EmoteImages Images { get; protected set; }
 }

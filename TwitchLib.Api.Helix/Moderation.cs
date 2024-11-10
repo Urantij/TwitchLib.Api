@@ -1,15 +1,12 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Core.Exceptions;
 using TwitchLib.Api.Core.Interfaces;
-using TwitchLib.Api.Helix.Models.Entitlements;
 using TwitchLib.Api.Helix.Models.Moderation.AutomodSettings;
 using TwitchLib.Api.Helix.Models.Moderation.BanUser;
 using TwitchLib.Api.Helix.Models.Moderation.BlockedTerms;
@@ -23,7 +20,6 @@ using TwitchLib.Api.Helix.Models.Moderation.GetModerators;
 using TwitchLib.Api.Helix.Models.Moderation.ShieldModeStatus;
 using TwitchLib.Api.Helix.Models.Moderation.ShieldModeStatus.GetShieldModeStatus;
 using TwitchLib.Api.Helix.Models.Moderation.ShieldModeStatus.UpdateShieldModeStatus;
-using TwitchLib.Api.Helix.Models.Moderation.UnbanRequests;
 using TwitchLib.Api.Helix.Models.Moderation.UnbanRequests.GetUnbanRequests;
 using TwitchLib.Api.Helix.Models.Moderation.UnbanRequests.ResolveUnbanRequests;
 using TwitchLib.Api.Helix.Models.Moderation.WarnChatUser;
@@ -58,7 +54,7 @@ namespace TwitchLib.Api.Helix
             if(string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(msgId))
                 throw new BadParameterException("userId and msgId cannot be null and must be greater than 0 length");
 
-            var json = new JObject
+            var json = new JsonObject
             {
                 ["user_id"] = userId,
                 ["msg_id"] = msgId,
@@ -101,7 +97,7 @@ namespace TwitchLib.Api.Helix
                 Messages = messages.ToArray()
             };
 
-            return TwitchPostGenericAsync<CheckAutoModStatusResponse>("/moderation/enforcements/status", ApiVersion.Helix, JsonConvert.SerializeObject(request), getParams, accessToken);
+            return TwitchPostGenericAsync<CheckAutoModStatusResponse>("/moderation/enforcements/status", ApiVersion.Helix, JsonSerializer.Serialize(request), getParams, accessToken);
         }
 
         #endregion
@@ -274,7 +270,7 @@ namespace TwitchLib.Api.Helix
                 data = banUserRequest
             };
 
-            return TwitchPostGenericAsync<BanUserResponse>("/moderation/bans", ApiVersion.Helix, JsonConvert.SerializeObject(body), getParams, accessToken);
+            return TwitchPostGenericAsync<BanUserResponse>("/moderation/bans", ApiVersion.Helix, JsonSerializer.Serialize(body), getParams, accessToken);
         }
 
         #endregion
@@ -380,7 +376,7 @@ namespace TwitchLib.Api.Helix
                 new KeyValuePair<string, string>("moderator_id", moderatorId),
             };
 
-            return TwitchPutGenericAsync<UpdateAutomodSettingsResponse>("/moderation/automod/settings", ApiVersion.Helix, JsonConvert.SerializeObject(settings), getParams, accessToken);
+            return TwitchPutGenericAsync<UpdateAutomodSettingsResponse>("/moderation/automod/settings", ApiVersion.Helix, JsonSerializer.Serialize(settings), getParams, accessToken);
         }
 
         #endregion
@@ -468,7 +464,7 @@ namespace TwitchLib.Api.Helix
                 new KeyValuePair<string, string>("moderator_id", moderatorId),
             };
 
-            var body = new JObject
+            var body = new JsonObject
             {
                 ["text"] = term
             };
@@ -674,7 +670,7 @@ namespace TwitchLib.Api.Helix
                 new KeyValuePair<string, string>("moderator_id", moderatorId)
             };
 
-            return TwitchPutGenericAsync<ShieldModeStatus>("/moderation/shield_mode", ApiVersion.Helix, JsonConvert.SerializeObject(request), getParams, accessToken);
+            return TwitchPutGenericAsync<ShieldModeStatus>("/moderation/shield_mode", ApiVersion.Helix, JsonSerializer.Serialize(request), getParams, accessToken);
         }
 
         #endregion
@@ -854,7 +850,7 @@ namespace TwitchLib.Api.Helix
                 data = warnChatUserRequest
             };
 
-            return TwitchPostGenericAsync<WarnChatUserResponse>("/moderation/warnings", ApiVersion.Helix, JsonConvert.SerializeObject(body), getParams, accessToken);
+            return TwitchPostGenericAsync<WarnChatUserResponse>("/moderation/warnings", ApiVersion.Helix, JsonSerializer.Serialize(body), getParams, accessToken);
         }
 
         #endregion

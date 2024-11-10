@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Analytics;
@@ -15,7 +15,7 @@ public class GetExtensionAnalyticsResponse
   /// <para>The report contains one row of data per day of the reporting window and only contains rows for the days that the extension was used.</para>
   /// <para>The array is empty if there are no reports.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public ExtensionAnalytics[] Data { get; protected set; }
 
   /// <summary>
@@ -23,6 +23,6 @@ public class GetExtensionAnalyticsResponse
   /// <para>The object is empty if there are no more pages left to page through.</para>
   /// <para>Use the cursor to set the GetExtensionAnalytics request’s after query parameter.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "pagination")]
+  [JsonPropertyName("pagination")]
   public Pagination Pagination { get; protected set; }
 }

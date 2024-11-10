@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.GetAdSchedule;
 
@@ -10,6 +10,6 @@ public class GetAdScheduleResponse
     /// <summary>
     /// <para>A list that contains information related to the channel’s ad schedule.</para>
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public AdSchedule[] Data { get; protected set; }
 }

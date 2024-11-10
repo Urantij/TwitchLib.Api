@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Text.Json;
 using Moq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Test.Helpers
 {
@@ -9,9 +10,9 @@ namespace TwitchLib.Api.Test.Helpers
     {
         public static string Of<T>(Expression<Func<T, bool>> predicate) where T : class
         {
-            return JsonConvert.SerializeObject(Mock.Of(predicate), new JsonSerializerSettings
+            return JsonSerializer.Serialize(Mock.Of(predicate), new JsonSerializerOptions()
             {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                ReferenceHandler = ReferenceHandler.IgnoreCycles
             });
         }
     }

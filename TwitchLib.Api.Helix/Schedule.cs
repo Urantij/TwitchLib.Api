@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -145,7 +145,7 @@ namespace TwitchLib.Api.Helix
                 new("broadcaster_id", broadcasterId)
             };
 
-            return TwitchPostGenericAsync<CreateChannelStreamSegmentResponse>("/schedule/segment", ApiVersion.Helix, JsonConvert.SerializeObject(payload), getParams, accessToken);
+            return TwitchPostGenericAsync<CreateChannelStreamSegmentResponse>("/schedule/segment", ApiVersion.Helix, JsonSerializer.Serialize(payload), getParams, accessToken);
         }
         #endregion
 
@@ -170,7 +170,7 @@ namespace TwitchLib.Api.Helix
                 new("id", segmentId)
             };
 
-            return TwitchPatchGenericAsync<UpdateChannelStreamSegmentResponse>("/schedule/segment", ApiVersion.Helix, JsonConvert.SerializeObject(payload), getParams, accessToken);
+            return TwitchPatchGenericAsync<UpdateChannelStreamSegmentResponse>("/schedule/segment", ApiVersion.Helix, JsonSerializer.Serialize(payload), getParams, accessToken);
         }
         #endregion
 

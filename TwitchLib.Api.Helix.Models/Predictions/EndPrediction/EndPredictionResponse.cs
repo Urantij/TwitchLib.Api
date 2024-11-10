@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Predictions.EndPrediction;
 
@@ -10,6 +10,6 @@ public class EndPredictionResponse
     /// <summary>
     /// A list that contains the single prediction that you updated.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Prediction[] Data { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.CheckAutoModStatus.Request;
 
@@ -10,6 +10,6 @@ public class MessageRequest
     /// <summary>
     /// The list of messages to check.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Message[] Messages { get; set; }
 }

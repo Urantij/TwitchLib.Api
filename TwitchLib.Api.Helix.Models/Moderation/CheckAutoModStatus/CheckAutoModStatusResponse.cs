@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.CheckAutoModStatus;
 
@@ -10,6 +10,6 @@ public class CheckAutoModStatusResponse
     /// <summary>
     /// The list of messages and whether Twitch would approve them for chat.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public AutoModResult[] Data { get; protected set; }
 }

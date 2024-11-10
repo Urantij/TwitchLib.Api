@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.ContentClassificationLabels;
 
@@ -10,6 +10,6 @@ public class GetContentClassificationLabelsResponse
   /// <summary>
   /// A list that contains information about the available content classification labels.
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public ContentClassificationLabel[] Data { get; protected set; }
 }

@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.ThirdParty.AuthorizationFlow
 {
     public class RefreshTokenResponse
     {
-        [JsonProperty(PropertyName = "token")]
+        [JsonPropertyName("token")]
         public string Token { get; protected set; }
-        [JsonProperty(PropertyName = "refresh")]
+        [JsonPropertyName("refresh")]
         public string Refresh { get; protected set; }
-        [JsonProperty(PropertyName = "client_id")]
+        [JsonPropertyName("client_id")]
         public string ClientId { get; protected set; }
     }
 }

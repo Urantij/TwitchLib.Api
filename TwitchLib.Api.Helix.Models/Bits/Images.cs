@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Bits;
 
@@ -14,7 +14,7 @@ public class Images
   /// <para>Contains the static and animated formats for the Cheermote. 
   /// Each format has a dictionary containing multiple image sizes and associated image URLs.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "dark")]
+  [JsonPropertyName("dark")]
   public ImageList Dark { get; protected set; }
 
   /// <summary>
@@ -22,6 +22,6 @@ public class Images
   /// <para>Contains the static and animated formats for the Cheermote. 
   /// Each format has a dictionary containing multiple image sizes and associated image URLs.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "light")]
+  [JsonPropertyName("light")]
   public ImageList Light { get; protected set; }
 }

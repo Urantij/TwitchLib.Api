@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.GetChannelVIPs;
 
@@ -10,16 +10,16 @@ public class ChannelVIPsResponseModel
   /// <summary>
   /// <para>An ID that uniquely identifies the VIP user.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "user_id")]
+  [JsonPropertyName("user_id")]
   public string UserId { get; protected set; }
   /// <summary>
   /// <para>The user’s display name. (Name has capitalization)</para>
   /// </summary>
-  [JsonProperty(PropertyName = "user_name")]
+  [JsonPropertyName("user_name")]
   public string UserName { get; protected set; }
   /// <summary>
   /// <para>The user’s login name. (Name is lowercase)</para>
   /// </summary>
-  [JsonProperty(PropertyName = "user_login")]
+  [JsonPropertyName("user_login")]
   public string UserLogin { get; protected set; }
 }

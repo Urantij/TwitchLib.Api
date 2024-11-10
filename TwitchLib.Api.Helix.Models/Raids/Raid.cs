@@ -1,5 +1,5 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Raids;
 
@@ -11,12 +11,12 @@ public class Raid
     /// <summary>
     /// The UTC date and time, in RFC3339 format, of when the raid was requested.
     /// </summary>
-    [JsonProperty(PropertyName = "created_at")]
+    [JsonPropertyName("created_at")]
     public DateTime CreatedAt { get; protected set; }
 
     /// <summary>
     /// A Boolean value that indicates whether the channel being raided contains mature content.
     /// </summary>
-    [JsonProperty(PropertyName = "is_mature")]
+    [JsonPropertyName("is_mature")]
     public bool IsMature { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Schedule.GetChannelStreamSchedule;
@@ -11,12 +11,12 @@ public class GetChannelStreamScheduleResponse
     /// <summary>
     /// The broadcaster’s streaming schedule.
     /// </summary>
-    [JsonProperty("data")]
+    [JsonPropertyName("data")]
     public ChannelStreamSchedule Schedule { get; protected set; }
 
     /// <summary>
     /// The information used to page through a list of results.
     /// </summary>
-    [JsonProperty("pagination")]
+    [JsonPropertyName("pagination")]
     public Pagination Pagination { get; protected set; }
 }

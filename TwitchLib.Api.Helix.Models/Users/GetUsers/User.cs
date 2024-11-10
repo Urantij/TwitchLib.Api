@@ -1,5 +1,5 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Users.GetUsers;
 
@@ -11,68 +11,68 @@ public class User
     /// <summary>
     /// An ID that identifies the user.
     /// </summary>
-    [JsonProperty(PropertyName = "id")]
+    [JsonPropertyName("id")]
     public string Id { get; protected set; }
 
     /// <summary>
-    /// The user’s login name.
+    /// The userï¿½s login name.
     /// </summary>
-    [JsonProperty(PropertyName = "login")]
+    [JsonPropertyName("login")]
     public string Login { get; protected set; }
 
     /// <summary>
-    /// The user’s display name.
+    /// The userï¿½s display name.
     /// </summary>
-    [JsonProperty(PropertyName = "display_name")]
+    [JsonPropertyName("display_name")]
     public string DisplayName { get; protected set; }
 
     /// <summary>
-    /// The UTC date and time that the user’s account was created. The timestamp is in RFC3339 format.
+    /// The UTC date and time that the userï¿½s account was created. The timestamp is in RFC3339 format.
     /// </summary>
-    [JsonProperty(PropertyName = "created_at")]
+    [JsonPropertyName("created_at")]
     public DateTime CreatedAt { get; protected set; }
 
     /// <summary>
     /// The type of user.
     /// </summary>
-    [JsonProperty(PropertyName = "type")]
+    [JsonPropertyName("type")]
     public string Type { get; protected set; }
 
     /// <summary>
     /// The type of broadcaster.
     /// </summary>
-    [JsonProperty(PropertyName = "broadcaster_type")]
+    [JsonPropertyName("broadcaster_type")]
     public string BroadcasterType { get; protected set; }
 
     /// <summary>
-    /// The user’s description of their channel.
+    /// The userï¿½s description of their channel.
     /// </summary>
-    [JsonProperty(PropertyName = "description")]
+    [JsonPropertyName("description")]
     public string Description { get; protected set; }
 
     /// <summary>
-    /// A URL to the user’s profile image.
+    /// A URL to the userï¿½s profile image.
     /// </summary>
-    [JsonProperty(PropertyName = "profile_image_url")]
+    [JsonPropertyName("profile_image_url")]
     public string ProfileImageUrl { get; protected set; }
 
     /// <summary>
-    /// A URL to the user’s offline image.
+    /// A URL to the userï¿½s offline image.
     /// </summary>
-    [JsonProperty(PropertyName = "offline_image_url")]
+    [JsonPropertyName("offline_image_url")]
     public string OfflineImageUrl { get; protected set; }
 
     /// <summary>
-    /// The number of times the user’s channel has been viewed.
+    /// The number of times the userï¿½s channel has been viewed.
     /// </summary>
     [Obsolete]
-    [JsonProperty(PropertyName = "view_count")]
+    [JsonPropertyName("view_count")]
     public long ViewCount { get; protected set; }
 
     /// <summary>
-    /// The user’s verified email address. 
+    /// The userï¿½s verified email address. 
     /// The object includes this field only if the user access token includes the user:read:email scope.
     /// </summary>
-    [JsonProperty(PropertyName = "email")]
+    [JsonPropertyName("email")]
     public string Email { get; protected set; }
 }

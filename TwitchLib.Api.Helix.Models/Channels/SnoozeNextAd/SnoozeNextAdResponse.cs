@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.SnoozeNextAd;
 
@@ -10,6 +10,6 @@ public class SnoozeNextAdResponse
     /// <summary>
     /// <para>A list that contains information about the channel’s snoozes and next upcoming ad after successfully snoozing.</para>
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public SnoozeNextAd[] Data { get; protected set; }
 }

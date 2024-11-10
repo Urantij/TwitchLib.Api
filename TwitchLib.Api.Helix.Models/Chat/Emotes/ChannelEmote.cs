@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Chat.Emotes;
 
@@ -10,24 +10,24 @@ public class ChannelEmote : Emote
     /// <summary>
     /// Contains the image URLs for the emote.
     /// </summary>
-    [JsonProperty("images")]
+    [JsonPropertyName("images")]
     public EmoteImages Images { get; protected set; }
 
     /// <summary>
     /// The subscriber tier at which the emote is unlocked.
     /// </summary>
-    [JsonProperty("tier")]
+    [JsonPropertyName("tier")]
     public string Tier { get; protected set; }
 
     /// <summary>
     /// The type of emote.
     /// </summary>
-    [JsonProperty("emote_type")]
+    [JsonPropertyName("emote_type")]
     public string EmoteType { get; protected set; }
 
     /// <summary>
     /// An ID that identifies the emote set that the emote belongs to.
     /// </summary>
-    [JsonProperty("emote_set_id")]
+    [JsonPropertyName("emote_set_id")]
     public string EmoteSetId { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Channels.StartCommercial;
 
@@ -11,18 +11,18 @@ public class StartCommercialResponse
   /// The length of the commercial you requested. 
   /// If you request a commercial that’s longer than 180 seconds, the API uses 180 seconds.
   /// </summary>
-  [JsonProperty(PropertyName = "length")]
+  [JsonPropertyName("length")]
   public int Length { get; protected set; }
 
   /// <summary>
   /// A message that indicates whether Twitch was able to serve an ad.
   /// </summary>
-  [JsonProperty(PropertyName = "message")]
+  [JsonPropertyName("message")]
   public string Message { get; protected set; }
 
   /// <summary>
   /// The number of seconds you must wait before running another commercial.
   /// </summary>
-  [JsonProperty(PropertyName = "retry_after")]
+  [JsonPropertyName("retry_after")]
   public int RetryAfter { get; protected set; }
 }

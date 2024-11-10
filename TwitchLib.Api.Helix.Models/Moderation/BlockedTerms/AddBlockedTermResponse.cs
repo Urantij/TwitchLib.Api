@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Moderation.BlockedTerms;
 
@@ -10,6 +10,6 @@ public class AddBlockedTermResponse
     /// <summary>
     /// A list that contains the single blocked term that the broadcaster added.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public BlockedTerm[] Data { get; protected set; }
 }

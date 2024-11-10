@@ -1,17 +1,17 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.ThirdParty.UsernameChange
 {
     public class UsernameChangeListing
     {
-        [JsonProperty(PropertyName = "userid")]
+        [JsonPropertyName("userid")]
         public string UserId { get; protected set; }
-        [JsonProperty(PropertyName = "username_old")]
+        [JsonPropertyName("username_old")]
         public string UsernameOld { get; protected set; }
-        [JsonProperty(PropertyName = "username_new")]
+        [JsonPropertyName("username_new")]
         public string UsernameNew { get; protected set; }
-        [JsonProperty(PropertyName = "found_at")]
+        [JsonPropertyName("found_at")]
         public DateTime FoundAt { get; protected set; }
     }
 }

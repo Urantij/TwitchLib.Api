@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.GuestStar.UpdateChannelGuestStarSettings;
 
@@ -11,6 +11,6 @@ public class UpdateChannelGuestStarSettingsRequest : GuestStarSettingsBase
     /// Flag determining if Guest Star should regenerate the auth token associated with the channel’s browser sources.
     /// <para>Providing a true value for this will immediately invalidate all browser sources previously configured in your streaming software.</para>
     /// </summary>
-    [JsonProperty(PropertyName = "regenerate_browser_sources")]
+    [JsonPropertyName("regenerate_browser_sources")]
     public bool RegenerateBrowserSources { get; protected set; }
 }

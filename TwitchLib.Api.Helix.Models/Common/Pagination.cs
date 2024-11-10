@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Common;
 
@@ -14,6 +14,6 @@ public class Pagination
   /// <para>The cursor used to get the next page of results.</para>
   /// <para>Use the cursor’s value to set the after or before query parameter depending on the direction you want to page.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "cursor")]
+  [JsonPropertyName("cursor")]
   public string Cursor { get; protected set; }
 }

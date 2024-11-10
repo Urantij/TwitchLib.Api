@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Polls.CreatePoll;
 
@@ -10,6 +10,6 @@ public class CreatePollResponse
     /// <summary>
     /// A list that contains the single poll that you created.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Poll[] Data { get; protected set; }
 }

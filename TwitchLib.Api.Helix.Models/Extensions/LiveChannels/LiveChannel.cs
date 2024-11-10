@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Extensions.LiveChannels;
 
@@ -10,30 +10,30 @@ public class LiveChannel
     /// <summary>
     /// The ID of the broadcaster that is streaming live and has installed or activated the extension.
     /// </summary>
-    [JsonProperty(PropertyName = "broadcaster_id")]
+    [JsonPropertyName("broadcaster_id")]
     public string BroadcasterId { get; protected set; }
 
     /// <summary>
     /// The broadcaster’s display name.
     /// </summary>
-    [JsonProperty(PropertyName = "broadcaster_name")]
+    [JsonPropertyName("broadcaster_name")]
     public string BroadcasterName { get; protected set; }
 
     /// <summary>
     /// The name of the category or game being streamed.
     /// </summary>
-    [JsonProperty(PropertyName = "game_name")]
+    [JsonPropertyName("game_name")]
     public string GameName { get; protected set; }
 
     /// <summary>
     /// The ID of the category or game being streamed.
     /// </summary>
-    [JsonProperty(PropertyName = "game_id")]
+    [JsonPropertyName("game_id")]
     public string GameId { get; protected set; }
 
     /// <summary>
     /// The title of the broadcaster’s stream.
     /// </summary>
-    [JsonProperty(PropertyName = "title")]
+    [JsonPropertyName("title")]
     public string Title { get; protected set; }
 }

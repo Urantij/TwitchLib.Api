@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Charity.GetCharityCampaign;
 
@@ -12,6 +12,6 @@ public class GetCharityCampaignResponse
   /// <para>The array is empty if the broadcaster is not running a charity campaign.</para>
   /// <para>The campaign information is no longer available as soon as the campaign ends.</para>
   /// </summary>
-  [JsonProperty(PropertyName = "data")]
+  [JsonPropertyName("data")]
   public CharityCampaignResponseModel[] Data { get; protected set; }
 }

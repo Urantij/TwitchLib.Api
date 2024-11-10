@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Timers;
-using Newtonsoft.Json;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Core.Interfaces;
@@ -111,7 +111,7 @@ namespace TwitchLib.Api.ThirdParty
                 var createUrl = $"{BaseUrl}/create/{Core.Common.Helpers.Base64Encode(applicationTitle)}/{scopesStr}";
 
                 var resp = new WebClient().DownloadString(createUrl);
-                return JsonConvert.DeserializeObject<CreatedFlow>(resp);
+                return (CreatedFlow)JsonSerializer.Deserialize(resp, typeof(CreatedFlow));
             }
 
             public RefreshTokenResponse RefreshToken(string refreshToken)
@@ -119,7 +119,7 @@ namespace TwitchLib.Api.ThirdParty
                 var refreshUrl = $"{BaseUrl}/refresh/{refreshToken}";
 
                 var resp = new WebClient().DownloadString(refreshUrl);
-                return JsonConvert.DeserializeObject<RefreshTokenResponse>(resp);
+                return (RefreshTokenResponse)JsonSerializer.Deserialize(resp, typeof(RefreshTokenResponse));
             }
 
             public void BeginPingingStatus(string id, int intervalMs = 5000)

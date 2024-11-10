@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Helix.Models.Common;
 
 namespace TwitchLib.Api.Helix.Models.Games;
@@ -11,12 +11,12 @@ public class GetTopGamesResponse
     /// <summary>
     /// The list of broadcasts. The broadcasts are sorted by the number of viewers, with the most popular first.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Game[] Data { get; protected set; }
 
     /// <summary>
     /// Contains the information used to page through the list of results. 
     /// </summary>
-    [JsonProperty(PropertyName = "pagination")]
+    [JsonPropertyName("pagination")]
     public Pagination Pagination { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Bits;
 
@@ -10,18 +10,18 @@ public class GetBitsLeaderboardResponse
     /// <summary>
     /// A list of leaderboard leaders. The leaders are returned in rank order by how much they’ve cheered.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public Listing[] Listings { get; protected set; }
 
     /// <summary>
     /// The reporting window’s start and end dates.
     /// </summary>
-    [JsonProperty(PropertyName = "date_range")]
+    [JsonPropertyName("date_range")]
     public DateRange DateRange { get; protected set; }
 
     /// <summary>
     /// The number of ranked users in data.
     /// </summary>
-    [JsonProperty(PropertyName = "total")]
+    [JsonPropertyName("total")]
     public int Total { get; protected set; }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Users.GetUsers;
 
@@ -10,6 +10,6 @@ public class GetUsersResponse
     /// <summary>
     /// The list of users.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public User[] Users { get; protected set; }
 }

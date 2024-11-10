@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using TwitchLib.Api.Core.Enums;
 
 namespace TwitchLib.Api.Helix.Models.Entitlements.UpdateDropsEntitlements;
@@ -11,12 +11,12 @@ public class DropEntitlementUpdate
     /// <summary>
     /// A string that indicates whether the status of the entitlements in the ids field were successfully updated.
     /// </summary>
-    [JsonProperty(PropertyName = "status")]
+    [JsonPropertyName("status")]
     public DropEntitlementUpdateStatus Status { get; protected set; }
 
     /// <summary>
     /// The list of entitlements that the status in the status field applies to.
     /// </summary>
-    [JsonProperty(PropertyName = "ids")]
+    [JsonPropertyName("ids")]
     public string[] Ids { get; protected set; }
 }

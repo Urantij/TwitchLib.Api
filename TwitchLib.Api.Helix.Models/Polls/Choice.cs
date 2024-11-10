@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Polls
 {
@@ -10,31 +10,31 @@ namespace TwitchLib.Api.Helix.Models.Polls
         /// <summary>
         /// An ID that identifies this choice.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
+        [JsonPropertyName("id")]
         public string Id { get; protected set; }
 
         /// <summary>
         /// The choice's title. The title may contain a maximum of 25 characters.
         /// </summary>
-        [JsonProperty(PropertyName = "title")]
+        [JsonPropertyName("title")]
         public string Title { get; protected set; }
 
         /// <summary>
         /// The total number of votes cast for this choice.
         /// </summary>
-        [JsonProperty(PropertyName = "votes")]
+        [JsonPropertyName("votes")]
         public int Votes { get; protected set; }
 
         /// <summary>
         /// The number of votes cast using Channel Points.
         /// </summary>
-        [JsonProperty(PropertyName = "channel_points_votes")]
+        [JsonPropertyName("channel_points_votes")]
         public int ChannelPointsVotes { get; protected set; }
 
         /// <summary>
         /// Not used; will be set to 0.
         /// </summary>
-        [JsonProperty(PropertyName = "bits_votes")]
+        [JsonPropertyName("bits_votes")]
         public int BitsVotes { get; protected set; }
     }
 }

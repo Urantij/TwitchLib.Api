@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Schedule.UpdateChannelStreamSegment;
 
@@ -10,6 +10,6 @@ public class UpdateChannelStreamSegmentResponse
     /// <summary>
     /// The broadcaster’s streaming schedule.
     /// </summary>
-    [JsonProperty("data")]
+    [JsonPropertyName("data")]
     public ChannelStreamSchedule Schedule { get; protected set; }
 }

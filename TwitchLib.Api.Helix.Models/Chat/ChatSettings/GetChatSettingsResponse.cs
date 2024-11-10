@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.Chat.ChatSettings;
 
@@ -10,6 +10,6 @@ public class GetChatSettingsResponse
     /// <summary>
     /// The list of chat settings. The list contains a single object with all the settings.
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public ChatSettingsResponseModel[] Data { get; protected set; }
 }

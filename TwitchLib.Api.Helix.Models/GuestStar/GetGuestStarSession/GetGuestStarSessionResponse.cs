@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TwitchLib.Api.Helix.Models.GuestStar.GetGuestStarSession;
 
@@ -10,6 +10,6 @@ public class GetGuestStarSessionResponse
     /// <summary>
     /// <para>A list that contains the channels guest star sessions</para>
     /// </summary>
-    [JsonProperty(PropertyName = "data")]
+    [JsonPropertyName("data")]
     public GuestStarSession[] Data { get; protected set; }
 }

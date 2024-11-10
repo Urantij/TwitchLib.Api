@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System.Collections.Generic;
 
 namespace TwitchLib.Api.Helix.Models.Bits;
@@ -14,13 +14,13 @@ public class ImageList
   /// <para>Animated image set for a Cheermote and include the following sizes: 1, 1.5, 2, 3, and 4</para>
   /// The value of each size contains the URL to the image.
   /// </summary>
-  [JsonProperty(PropertyName = "animated")]
+  [JsonPropertyName("animated")]
   public Dictionary<string, string> Animated { get; protected set; }
 
   /// <summary>
   /// <para>Static image set for a Cheermote and include the following sizes: 1, 1.5, 2, 3, and 4</para>
   /// The value of each size contains the URL to the image.
   /// </summary>
-  [JsonProperty(PropertyName = "static")]
+  [JsonPropertyName("static")]
   public Dictionary<string, string> Static { get; protected set; }
 }
