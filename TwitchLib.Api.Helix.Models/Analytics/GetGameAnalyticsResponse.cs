@@ -26,4 +26,10 @@ public class GetGameAnalyticsResponse
   /// </summary>
   [JsonPropertyName("pagination")]
   public Pagination Pagination { get; protected set; }
+
+  public GetGameAnalyticsResponse(GameAnalytics[] data = null, Pagination pagination = null)
+  {
+    Data = data;
+    Pagination = pagination;
+  }
 }

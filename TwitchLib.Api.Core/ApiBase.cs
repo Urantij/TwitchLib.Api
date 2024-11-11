@@ -86,7 +86,7 @@ namespace TwitchLib.Api.Core
             return await _rateLimiter.Perform(async () => (await _http.GeneralRequestAsync(url, "GET", null, api, clientId, accessToken).ConfigureAwait(false)).Value).ConfigureAwait(false);
         }
 
-        protected async Task<T> TwitchGetGenericAsync<T>(string resource, ApiVersion api, List<KeyValuePair<string, string>> getParams = null, string accessToken = null, string clientId = null, string customBase = null)
+        protected async Task<T> TwitchGetGenericAsync<T>(string resource, ApiVersion api, List<KeyValuePair<string, string>> getParams = null, string accessToken = null, string clientId = null, string customBase = null, JsonSerializerContext serializerContext = null)
         {
             var url = ConstructResourceUrl(resource, getParams, api, customBase);
 
@@ -96,7 +96,15 @@ namespace TwitchLib.Api.Core
             accessToken = await GetAccessTokenAsync(accessToken).ConfigureAwait(false);
             ForceAccessTokenAndClientIdForHelix(clientId, accessToken, api);
 
-            return await _rateLimiter.Perform(async () => JsonSerializer.Deserialize<T>((await _http.GeneralRequestAsync(url, "GET", null, api, clientId, accessToken).ConfigureAwait(false)).Value, _twitchLibJsonDeserializer)).ConfigureAwait(false);
+            JsonSerializerOptions options = GenerateOptions(serializerContext);
+
+            return await _rateLimiter.Perform(async () =>
+            {
+                string content = (await _http.GeneralRequestAsync(url, "GET", null, api, clientId, accessToken)
+                    .ConfigureAwait(false)).Value;
+
+                return JsonSerializer.Deserialize<T>(content, options);
+            }).ConfigureAwait(false);
         }
 
         protected async Task<T> TwitchPatchGenericAsync<T>(string resource, ApiVersion api, string payload, List<KeyValuePair<string, string>> getParams = null, string accessToken = null, string clientId = null, string customBase = null)
@@ -287,6 +295,15 @@ namespace TwitchLib.Api.Core
 
                 client.DownloadStringCompleted -= DownloadStringCompletedEventHandler;
             }
+        }
+
+        protected JsonSerializerOptions GenerateOptions(JsonSerializerContext context)
+        {
+            return new JsonSerializerOptions()
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                TypeInfoResolver = context
+            };
         }
 
         private readonly JsonSerializerOptions _twitchLibJsonDeserializer = new()

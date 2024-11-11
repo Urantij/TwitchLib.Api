@@ -7,6 +7,19 @@ namespace TwitchLib.Api.Helix.Models.Teams;
 /// </summary>
 public abstract class TeamBase
 {
+    protected TeamBase(string banner = null, string backgroundImageUrl = null, string createdAt = null, string updatedAt = null, string info = null, string thumbnailUrl = null, string teamName = null, string teamDisplayName = null, string id = null)
+    {
+        Banner = banner;
+        BackgroundImageUrl = backgroundImageUrl;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
+        Info = info;
+        ThumbnailUrl = thumbnailUrl;
+        TeamName = teamName;
+        TeamDisplayName = teamDisplayName;
+        Id = id;
+    }
+
     /// <summary>
     /// A URL to the team’s banner.
     /// </summary>

@@ -7,6 +7,14 @@ namespace TwitchLib.Api.Helix.Models.Games;
 /// </summary>
 public class Game
 {
+    public Game(string id = null, string name = null, string boxArtUrl = null, string igdbId = null)
+    {
+        Id = id;
+        Name = name;
+        BoxArtUrl = boxArtUrl;
+        IgdbId = igdbId;
+    }
+
     /// <summary>
     /// An ID that identifies the category or game.
     /// </summary>

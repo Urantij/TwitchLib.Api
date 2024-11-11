@@ -32,4 +32,12 @@ public class ExtensionAnalytics
   /// </summary>
   [JsonPropertyName("date_range")]
   public DateRange DateRange { get; protected set; }
+
+  public ExtensionAnalytics(string extensionId = null, string url = null, string type = null, DateRange dateRange = null)
+  {
+    ExtensionId = extensionId;
+    Url = url;
+    Type = type;
+    DateRange = dateRange;
+  }
 }

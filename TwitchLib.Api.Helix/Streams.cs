@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -15,6 +16,12 @@ using TwitchLib.Api.Helix.Models.Streams.GetStreamTags;
 
 namespace TwitchLib.Api.Helix
 {
+    [JsonSerializable(typeof(GetStreamsResponse))]
+    public partial class GetStreamsResponseContext : JsonSerializerContext
+    {
+            
+    }
+
     /// <summary>
     /// Streams related APIs
     /// </summary>
@@ -76,7 +83,7 @@ namespace TwitchLib.Api.Helix
                 getParams.Add(new KeyValuePair<string, string>("type", type));
             }
 
-            return TwitchGetGenericAsync<GetStreamsResponse>("/streams", ApiVersion.Helix, getParams, accessToken);
+            return TwitchGetGenericAsync<GetStreamsResponse>("/streams", ApiVersion.Helix, getParams, accessToken, serializerContext: GetStreamsResponseContext.Default);
         }
 
         /// <summary>

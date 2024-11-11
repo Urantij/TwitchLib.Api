@@ -7,6 +7,13 @@ namespace TwitchLib.Api.Helix.Models.GuestStar;
 /// </summary>
 public class GuestStarMediaSettings
 {
+    public GuestStarMediaSettings(bool isAvailable = default, bool isHostEnabled = default, bool isGuestEnabled = default)
+    {
+        IsAvailable = isAvailable;
+        IsHostEnabled = isHostEnabled;
+        IsGuestEnabled = isGuestEnabled;
+    }
+
     /// <summary>
     /// Flag determining whether the guest has an appropriate audio/video device available to be transmitted to the session.
     /// </summary>

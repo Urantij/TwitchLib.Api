@@ -7,6 +7,13 @@ namespace TwitchLib.Api.Helix.Models.Teams;
 /// </summary>
 public class TeamMember
 {
+    public TeamMember(string userId = null, string userName = null, string userLogin = null)
+    {
+        UserId = userId;
+        UserName = userName;
+        UserLogin = userLogin;
+    }
+
     /// <summary>
     /// An ID that identifies the team member.
     /// </summary>

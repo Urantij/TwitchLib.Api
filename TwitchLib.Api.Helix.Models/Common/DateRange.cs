@@ -19,4 +19,10 @@ public class DateRange
   /// </summary>
   [JsonPropertyName("ended_at")]
   public DateTime EndedAt { get; protected set; }
+
+  public DateRange(DateTime startedAt = default, DateTime endedAt = default)
+  {
+    StartedAt = startedAt;
+    EndedAt = endedAt;
+  }
 }

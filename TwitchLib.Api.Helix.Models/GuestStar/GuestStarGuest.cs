@@ -8,6 +8,19 @@ namespace TwitchLib.Api.Helix.Models.GuestStar;
 /// </summary>
 public class GuestStarGuest
 {
+    public GuestStarGuest(string slotId = null, bool isLive = default, string userId = null, string userDisplayName = null, string userLogin = null, int volume = default, string assignedAt = null, GuestStarMediaSettings audioSettings = null, GuestStarMediaSettings videoSettings = null)
+    {
+        SlotId = slotId;
+        IsLive = isLive;
+        UserId = userId;
+        UserDisplayName = userDisplayName;
+        UserLogin = userLogin;
+        Volume = volume;
+        AssignedAt = assignedAt;
+        AudioSettings = audioSettings;
+        VideoSettings = videoSettings;
+    }
+
     /// <summary>
     /// ID representing this guest’s slot assignment.
     /// <para>Host is always in slot "0"</para>

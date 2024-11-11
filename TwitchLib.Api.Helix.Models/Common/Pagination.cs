@@ -10,6 +10,11 @@ namespace TwitchLib.Api.Helix.Models.Common;
 /// </summary>
 public class Pagination
 {
+  public Pagination(string cursor = null)
+  {
+    Cursor = cursor;
+  }
+
   /// <summary>
   /// <para>The cursor used to get the next page of results.</para>
   /// <para>Use the cursor’s value to set the after or before query parameter depending on the direction you want to page.</para>

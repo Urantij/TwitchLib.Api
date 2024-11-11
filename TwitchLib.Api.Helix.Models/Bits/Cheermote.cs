@@ -8,6 +8,16 @@ namespace TwitchLib.Api.Helix.Models.Bits;
 /// </summary>
 public class Cheermote
 {
+  public Cheermote(string prefix = null, Tier[] tiers = null, string type = null, int order = default, DateTime lastUpdated = default, bool isCharitable = default)
+  {
+    Prefix = prefix;
+    Tiers = tiers;
+    Type = type;
+    Order = order;
+    LastUpdated = lastUpdated;
+    IsCharitable = isCharitable;
+  }
+
   /// <summary>
   /// <para>The name portion of the Cheermote string that you use in chat to cheer Bits. 
   /// The full Cheermote string is the concatenation of {prefix} + {number of Bits}.</para> 

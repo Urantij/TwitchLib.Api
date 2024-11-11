@@ -8,6 +8,25 @@ namespace TwitchLib.Api.Helix.Models.Streams.GetStreams;
 /// </summary>
 public class Stream
 {
+    public Stream(string id = null, string userId = null, string userLogin = null, string userName = null, string gameId = null, string gameName = null, string type = null, string title = null, string[] tags = null, int viewerCount = default, DateTime startedAt = default, string language = null, string thumbnailUrl = null, string[] tagIds = null, bool isMature = default)
+    {
+        Id = id;
+        UserId = userId;
+        UserLogin = userLogin;
+        UserName = userName;
+        GameId = gameId;
+        GameName = gameName;
+        Type = type;
+        Title = title;
+        Tags = tags;
+        ViewerCount = viewerCount;
+        StartedAt = startedAt;
+        Language = language;
+        ThumbnailUrl = thumbnailUrl;
+        TagIds = tagIds;
+        IsMature = isMature;
+    }
+
     /// <summary>
     /// An ID that identifies the stream.
     /// </summary>

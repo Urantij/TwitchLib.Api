@@ -9,6 +9,12 @@ namespace TwitchLib.Api.Helix.Models.Analytics;
 /// </summary>
 public class GetExtensionAnalyticsResponse
 {
+  public GetExtensionAnalyticsResponse(ExtensionAnalytics[] data = null, Pagination pagination = null)
+  {
+    Data = data;
+    Pagination = pagination;
+  }
+
   /// <summary>
   /// <para>A list of analytic reports for the extensions.</para>
   /// <para>The reports are returned in no particular order; however, the data within each report is in ascending order by date (newest first).</para>

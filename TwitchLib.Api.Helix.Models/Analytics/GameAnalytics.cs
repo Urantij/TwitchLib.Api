@@ -32,4 +32,12 @@ public class GameAnalytics
   /// </summary>
   [JsonPropertyName("date_range")]
   public DateRange DateRange { get; protected set; }
+
+  public GameAnalytics(string gameId = null, string url = null, string type = null, DateRange dateRange = null)
+  {
+    GameId = gameId;
+    Url = url;
+    Type = type;
+    DateRange = dateRange;
+  }
 }
