@@ -7,6 +7,14 @@ namespace TwitchLib.Api.Helix.Models.Chat.Emotes;
 /// </summary>
 public class ChannelEmote : Emote
 {
+    public ChannelEmote(string id = null, string name = null, string[] format = null, string[] scale = null, string[] themeMode = null, EmoteImages images = null, string tier = null, string emoteType = null, string emoteSetId = null) : base(id, name, format, scale, themeMode)
+    {
+        Images = images;
+        Tier = tier;
+        EmoteType = emoteType;
+        EmoteSetId = emoteSetId;
+    }
+
     /// <summary>
     /// Contains the image URLs for the emote.
     /// </summary>

@@ -7,6 +7,13 @@ namespace TwitchLib.Api.Helix.Models.Chat.Emotes;
 /// </summary>
 public class EmoteImages
 {
+    public EmoteImages(string url1X = null, string url2X = null, string url4X = null)
+    {
+        Url1X = url1X;
+        Url2X = url2X;
+        Url4X = url4X;
+    }
+
     /// <summary>
     /// A URL to the small version (28px x 28px) of the emote.
     /// </summary>

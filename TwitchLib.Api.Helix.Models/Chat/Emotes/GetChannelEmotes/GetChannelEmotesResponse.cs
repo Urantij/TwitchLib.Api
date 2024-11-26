@@ -7,6 +7,12 @@ namespace TwitchLib.Api.Helix.Models.Chat.Emotes.GetChannelEmotes;
 /// </summary>
 public class GetChannelEmotesResponse
 {
+    public GetChannelEmotesResponse(ChannelEmote[] channelEmotes = null, string template = null)
+    {
+        ChannelEmotes = channelEmotes;
+        Template = template;
+    }
+
     /// <summary>
     /// The list of emotes that the specified broadcaster created.
     /// </summary>

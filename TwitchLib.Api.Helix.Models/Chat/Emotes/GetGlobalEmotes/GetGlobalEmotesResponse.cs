@@ -7,6 +7,12 @@ namespace TwitchLib.Api.Helix.Models.Chat.Emotes.GetGlobalEmotes;
 /// </summary>
 public class GetGlobalEmotesResponse
 {
+    public GetGlobalEmotesResponse(GlobalEmote[] globalEmotes = null, string template = null)
+    {
+        GlobalEmotes = globalEmotes;
+        Template = template;
+    }
+
     /// <summary>
     /// The list of global emotes.
     /// </summary>

@@ -7,6 +7,15 @@ namespace TwitchLib.Api.Helix.Models.Chat.Emotes;
 /// </summary>
 public abstract class Emote
 {
+    protected Emote(string id = null, string name = null, string[] format = null, string[] scale = null, string[] themeMode = null)
+    {
+        Id = id;
+        Name = name;
+        Format = format;
+        Scale = scale;
+        ThemeMode = themeMode;
+    }
+
     /// <summary>
     /// An ID that identifies the emote.
     /// </summary>
