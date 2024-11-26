@@ -17,7 +17,7 @@ using TwitchLib.Api.Helix.Models.Streams.GetStreamTags;
 namespace TwitchLib.Api.Helix
 {
     [JsonSerializable(typeof(GetStreamsResponse))]
-    public partial class GetStreamsResponseContext : JsonSerializerContext
+    internal partial class GetStreamsResponseContext : JsonSerializerContext
     {
             
     }

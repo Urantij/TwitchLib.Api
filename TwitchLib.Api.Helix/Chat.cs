@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Web;
 using TwitchLib.Api.Core;
@@ -22,6 +23,13 @@ using TwitchLib.Api.Helix.Models.Chat.GetUserChatColor;
 
 namespace TwitchLib.Api.Helix
 {
+    [JsonSerializable(typeof(GetChannelEmotesResponse))]
+    [JsonSerializable(typeof(GetGlobalEmotesResponse))]
+    internal partial class EmoteContext : JsonSerializerContext
+    {
+            
+    }
+
     /// <summary>
     /// Chat related APIs
     /// </summary>
@@ -117,7 +125,7 @@ namespace TwitchLib.Api.Helix
                 new KeyValuePair<string, string>("broadcaster_id", broadcasterId)
             };
 
-            return TwitchGetGenericAsync<GetChannelEmotesResponse>("/chat/emotes", ApiVersion.Helix, getParams, accessToken);
+            return TwitchGetGenericAsync<GetChannelEmotesResponse>("/chat/emotes", ApiVersion.Helix, getParams, accessToken, serializerContext: EmoteContext.Default);
         }
 
         /// <summary>
@@ -147,7 +155,7 @@ namespace TwitchLib.Api.Helix
         /// <returns cref="GetGlobalEmotesResponse"></returns>
         public Task<GetGlobalEmotesResponse> GetGlobalEmotesAsync(string accessToken = null)
         {
-            return TwitchGetGenericAsync<GetGlobalEmotesResponse>("/chat/emotes/global", ApiVersion.Helix, accessToken: accessToken);
+            return TwitchGetGenericAsync<GetGlobalEmotesResponse>("/chat/emotes/global", ApiVersion.Helix, accessToken: accessToken, serializerContext: EmoteContext.Default);
         }
 
         /// <summary>
