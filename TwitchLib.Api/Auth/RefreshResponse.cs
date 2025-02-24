@@ -7,6 +7,14 @@ namespace TwitchLib.Api.Auth
     /// </summary>
     public class RefreshResponse
     {
+        public RefreshResponse(string accessToken = null, string refreshToken = null, int expiresIn = default, string[] scopes = null)
+        {
+            AccessToken = accessToken;
+            RefreshToken = refreshToken;
+            ExpiresIn = expiresIn;
+            Scopes = scopes;
+        }
+
         /// <summary>
         /// Access Token
         /// </summary>

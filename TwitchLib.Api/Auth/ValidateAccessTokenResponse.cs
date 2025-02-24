@@ -8,6 +8,15 @@ namespace TwitchLib.Api.Auth
     /// </summary>
     public class ValidateAccessTokenResponse
     {
+        public ValidateAccessTokenResponse(string clientId = null, string login = null, List<string> scopes = null, string userId = null, int expiresIn = default)
+        {
+            ClientId = clientId;
+            Login = login;
+            Scopes = scopes;
+            UserId = userId;
+            ExpiresIn = expiresIn;
+        }
+
         /// <summary>
         /// Client Id
         /// </summary>

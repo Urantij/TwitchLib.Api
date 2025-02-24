@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Web;
 using TwitchLib.Api.Core;
@@ -8,6 +9,14 @@ using TwitchLib.Api.Core.Interfaces;
 
 namespace TwitchLib.Api.Auth
 {
+    [JsonSerializable(typeof(ValidateAccessTokenResponse))]
+    [JsonSerializable(typeof(AuthCodeResponse))]
+    [JsonSerializable(typeof(RefreshResponse))]
+    internal partial class AuthSerializeContext : JsonSerializerContext
+    {
+            
+    }
+    
     /// <summary>These endpoints fall outside of Helix, and relate to Authorization</summary>
     public class Auth : ApiBase
     {
@@ -42,7 +51,7 @@ namespace TwitchLib.Api.Auth
                 new("client_secret", clientSecret)
             };
 
-            return TwitchPostGenericAsync<RefreshResponse>("/token", ApiVersion.Auth, null, getParams, null, internalClientId);
+            return TwitchPostGenericAsync<RefreshResponse>("/token", ApiVersion.Auth, null, getParams, null, internalClientId, serializerContext: AuthSerializeContext.Default);
         }
 
         /// <summary>
@@ -113,7 +122,7 @@ namespace TwitchLib.Api.Auth
                 new("redirect_uri", redirectUri)
             };
 
-            return TwitchPostGenericAsync<AuthCodeResponse>("/token", ApiVersion.Auth, null, getParams, null, internalClientId);
+            return TwitchPostGenericAsync<AuthCodeResponse>("/token", ApiVersion.Auth, null, getParams, null, internalClientId, serializerContext: AuthSerializeContext.Default);
         }
 
         /// <summary>
@@ -125,7 +134,7 @@ namespace TwitchLib.Api.Auth
         {
             try
             {
-                return await TwitchGetGenericAsync<ValidateAccessTokenResponse>("/validate", ApiVersion.Auth, accessToken: accessToken);
+                return await TwitchGetGenericAsync<ValidateAccessTokenResponse>("/validate", ApiVersion.Auth, accessToken: accessToken, serializerContext: AuthSerializeContext.Default);
             } catch(BadScopeException)
             {
                 // BadScopeException == 401, which is surfaced when token is invalid
