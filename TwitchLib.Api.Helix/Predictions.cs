@@ -21,6 +21,7 @@ namespace TwitchLib.Api.Helix
     [JsonSerializable(typeof(GetPredictionsResponse))]
     [JsonSerializable(typeof(CreatePredictionResponse))]
     [JsonSerializable(typeof(EndPredictionResponse))]
+    [JsonSourceGenerationOptions(UseStringEnumConverter = true)]
     internal partial class PredictionsSerializeContext : JsonSerializerContext
     {
     }

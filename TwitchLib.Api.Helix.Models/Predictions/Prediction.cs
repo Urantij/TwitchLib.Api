@@ -8,7 +8,7 @@ namespace TwitchLib.Api.Helix.Models.Predictions;
 /// </summary>
 public class Prediction
 {
-    public Prediction(string id = null, string broadcasterId = null, string broadcasterName = null, string broadcasterLogin = null, string title = null, string winningOutcomeId = null, Outcome[] outcomes = null, string predictionWindow = null, PredictionStatus status = default, string createdAt = null, string endedAt = null, string lockedAt = null)
+    public Prediction(string id = null, string broadcasterId = null, string broadcasterName = null, string broadcasterLogin = null, string title = null, string winningOutcomeId = null, Outcome[] outcomes = null, int predictionWindow = default, PredictionStatus status = default, string createdAt = null, string endedAt = null, string lockedAt = null)
     {
         Id = id;
         BroadcasterId = broadcasterId;
@@ -70,7 +70,7 @@ public class Prediction
     /// The length of time (in seconds) that the prediction will run for.
     /// </summary>
     [JsonPropertyName("prediction_window")]
-    public string PredictionWindow { get; protected set; }
+    public int PredictionWindow { get; protected set; }
 
     /// <summary>
     /// The prediction’s status.
