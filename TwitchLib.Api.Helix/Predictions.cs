@@ -15,13 +15,16 @@ namespace TwitchLib.Api.Helix
 {
     [JsonSerializable(typeof(GetPredictionsResponse))]
     [JsonSerializable(typeof(CreatePredictionResponse))]
-    [JsonSerializable(typeof(CreatePredictionRequest))]
     [JsonSerializable(typeof(EndPredictionResponse))]
     internal partial class PredictionsSerializeContext : JsonSerializerContext
     {
-            
     }
     
+    [JsonSerializable(typeof(CreatePredictionRequest))]
+    internal partial class PredictionsSerializeContext2 : JsonSerializerContext
+    {
+    }
+
     /// <summary>
     /// Predictions related APIs
     /// </summary>
@@ -78,7 +81,10 @@ namespace TwitchLib.Api.Helix
         /// <returns cref="CreatePredictionResponse"></returns>
         public Task<CreatePredictionResponse> CreatePredictionAsync(CreatePredictionRequest request, string accessToken = null)
         {
-            return TwitchPostGenericAsync<CreatePredictionResponse>("/predictions", ApiVersion.Helix, JsonSerializer.Serialize(request, request.GetType(), PredictionsSerializeContext.Default), accessToken: accessToken, serializerContext: PredictionsSerializeContext.Default);
+            string payload = JsonSerializer.Serialize(request, request.GetType(), PredictionsSerializeContext2.Default);
+
+            return TwitchPostGenericAsync<CreatePredictionResponse>("/predictions", ApiVersion.Helix, payload,
+                accessToken: accessToken, serializerContext: PredictionsSerializeContext.Default);
         }
         #endregion
 
