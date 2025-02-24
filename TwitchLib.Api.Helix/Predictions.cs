@@ -13,6 +13,11 @@ using TwitchLib.Api.Helix.Models.Predictions.GetPredictions;
 
 namespace TwitchLib.Api.Helix
 {
+    // Похоже, сурс генератор не умеет в одинаковые названия классов.
+    // Если оставить как есть, он не найдёт TwitchLib.Api.Helix.Models.Predictions.Outcome[]
+    // Если его добавить, не найдёт TwitchLib.Api.Helix.Models.Predictions.CreatePrediction.Outcome[]
+    // )))
+    
     [JsonSerializable(typeof(GetPredictionsResponse))]
     [JsonSerializable(typeof(CreatePredictionResponse))]
     [JsonSerializable(typeof(EndPredictionResponse))]
