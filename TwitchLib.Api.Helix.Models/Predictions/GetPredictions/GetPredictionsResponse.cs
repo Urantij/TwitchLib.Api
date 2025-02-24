@@ -5,6 +5,12 @@ namespace TwitchLib.Api.Helix.Models.Predictions.GetPredictions
 {
     public class GetPredictionsResponse
     {
+        public GetPredictionsResponse(Prediction[] data = null, Pagination pagination = null)
+        {
+            Data = data;
+            Pagination = pagination;
+        }
+
         [JsonPropertyName("data")]
         public Prediction[] Data { get; protected set; }
         [JsonPropertyName("pagination")]

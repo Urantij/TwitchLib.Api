@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -12,6 +13,15 @@ using TwitchLib.Api.Helix.Models.Predictions.GetPredictions;
 
 namespace TwitchLib.Api.Helix
 {
+    [JsonSerializable(typeof(GetPredictionsResponse))]
+    [JsonSerializable(typeof(CreatePredictionResponse))]
+    [JsonSerializable(typeof(CreatePredictionRequest))]
+    [JsonSerializable(typeof(EndPredictionResponse))]
+    internal partial class PredictionsSerializeContext : JsonSerializerContext
+    {
+            
+    }
+    
     /// <summary>
     /// Predictions related APIs
     /// </summary>
@@ -53,7 +63,7 @@ namespace TwitchLib.Api.Helix
             if (!string.IsNullOrWhiteSpace(after))
                 getParams.Add(new KeyValuePair<string, string>("after", after));
 
-            return TwitchGetGenericAsync<GetPredictionsResponse>("/predictions", ApiVersion.Helix, getParams, accessToken);
+            return TwitchGetGenericAsync<GetPredictionsResponse>("/predictions", ApiVersion.Helix, getParams, accessToken, serializerContext: PredictionsSerializeContext.Default);
         }
         #endregion
 
@@ -68,7 +78,7 @@ namespace TwitchLib.Api.Helix
         /// <returns cref="CreatePredictionResponse"></returns>
         public Task<CreatePredictionResponse> CreatePredictionAsync(CreatePredictionRequest request, string accessToken = null)
         {
-            return TwitchPostGenericAsync<CreatePredictionResponse>("/predictions", ApiVersion.Helix, JsonSerializer.Serialize(request), accessToken: accessToken);
+            return TwitchPostGenericAsync<CreatePredictionResponse>("/predictions", ApiVersion.Helix, JsonSerializer.Serialize(request, request.GetType(), PredictionsSerializeContext.Default), accessToken: accessToken, serializerContext: PredictionsSerializeContext.Default);
         }
         #endregion
 
@@ -106,7 +116,7 @@ namespace TwitchLib.Api.Helix
             if (!string.IsNullOrWhiteSpace(winningOutcomeId))
                 json["winning_outcome_id"] = winningOutcomeId;
 
-            return TwitchPatchGenericAsync<EndPredictionResponse>("/predictions", ApiVersion.Helix, json.ToString(), accessToken: accessToken);
+            return TwitchPatchGenericAsync<EndPredictionResponse>("/predictions", ApiVersion.Helix, json.ToString(), accessToken: accessToken, serializerContext: PredictionsSerializeContext.Default);
         }
         #endregion
     }

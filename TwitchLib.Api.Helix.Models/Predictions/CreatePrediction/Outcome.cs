@@ -7,6 +7,11 @@ namespace TwitchLib.Api.Helix.Models.Predictions.CreatePrediction;
 /// </summary>
 public class Outcome
 {
+    public Outcome(string title = null)
+    {
+        Title = title;
+    }
+
     /// <summary>
     /// The question that the broadcaster is asking.
     /// The title is limited to a maximum of 45 characters.

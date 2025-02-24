@@ -7,6 +7,15 @@ namespace TwitchLib.Api.Helix.Models.Predictions;
 /// </summary>
 public class TopPredictor
 {
+    public TopPredictor(string userId = null, string userName = null, string userLogin = null, int channelPointsUsed = default, int channelPointsWon = default)
+    {
+        UserId = userId;
+        UserName = userName;
+        UserLogin = userLogin;
+        ChannelPointsUsed = channelPointsUsed;
+        ChannelPointsWon = channelPointsWon;
+    }
+
     /// <summary>
     /// An ID that identifies the viewer.
     /// </summary>

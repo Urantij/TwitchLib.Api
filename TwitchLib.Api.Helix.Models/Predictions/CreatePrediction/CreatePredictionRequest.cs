@@ -7,6 +7,14 @@ namespace TwitchLib.Api.Helix.Models.Predictions.CreatePrediction;
 /// </summary>
 public class CreatePredictionRequest
 {
+    public CreatePredictionRequest(string broadcasterId = null, string title = null, Outcome[] outcomes = null, int predictionWindowSeconds = default)
+    {
+        BroadcasterId = broadcasterId;
+        Title = title;
+        Outcomes = outcomes;
+        PredictionWindowSeconds = predictionWindowSeconds;
+    }
+
     /// <summary>
     /// The ID of the broadcaster that’s running the prediction.
     /// This ID must match the user ID in the user access token.

@@ -8,6 +8,22 @@ namespace TwitchLib.Api.Helix.Models.Predictions;
 /// </summary>
 public class Prediction
 {
+    public Prediction(string id = null, string broadcasterId = null, string broadcasterName = null, string broadcasterLogin = null, string title = null, string winningOutcomeId = null, Outcome[] outcomes = null, string predictionWindow = null, PredictionStatus status = default, string createdAt = null, string endedAt = null, string lockedAt = null)
+    {
+        Id = id;
+        BroadcasterId = broadcasterId;
+        BroadcasterName = broadcasterName;
+        BroadcasterLogin = broadcasterLogin;
+        Title = title;
+        WinningOutcomeId = winningOutcomeId;
+        Outcomes = outcomes;
+        PredictionWindow = predictionWindow;
+        Status = status;
+        CreatedAt = createdAt;
+        EndedAt = endedAt;
+        LockedAt = lockedAt;
+    }
+
     /// <summary>
     /// An ID that identifies this prediction.
     /// </summary>

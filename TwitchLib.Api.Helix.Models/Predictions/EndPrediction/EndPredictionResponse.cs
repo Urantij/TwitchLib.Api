@@ -7,6 +7,11 @@ namespace TwitchLib.Api.Helix.Models.Predictions.EndPrediction;
 /// </summary>
 public class EndPredictionResponse
 {
+    public EndPredictionResponse(Prediction[] data = null)
+    {
+        Data = data;
+    }
+
     /// <summary>
     /// A list that contains the single prediction that you updated.
     /// </summary>

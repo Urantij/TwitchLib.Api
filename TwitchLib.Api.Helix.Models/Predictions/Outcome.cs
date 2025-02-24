@@ -7,6 +7,16 @@ namespace TwitchLib.Api.Helix.Models.Predictions;
 /// </summary>
 public class Outcome
 {
+    public Outcome(string id = null, string title = null, int channelPoints = default, int channelPointsVotes = default, TopPredictor[] topPredictors = null, string color = null)
+    {
+        Id = id;
+        Title = title;
+        ChannelPoints = channelPoints;
+        ChannelPointsVotes = channelPointsVotes;
+        TopPredictors = topPredictors;
+        Color = color;
+    }
+
     /// <summary>
     /// An ID that identifies this outcome.
     /// </summary>

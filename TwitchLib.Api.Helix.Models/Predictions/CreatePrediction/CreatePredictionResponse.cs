@@ -7,6 +7,11 @@ namespace TwitchLib.Api.Helix.Models.Predictions.CreatePrediction;
 /// </summary>
 public class CreatePredictionResponse
 {
+    public CreatePredictionResponse(Prediction[] data = null)
+    {
+        Data = data;
+    }
+
     /// <summary>
     /// A list that contains the single prediction that you created.
     /// </summary>
